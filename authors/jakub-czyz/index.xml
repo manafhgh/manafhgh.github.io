@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Jakub Czyz on MANAF GHARAIBEH</title>
+    <link>https://manafhgh.github.io/authors/jakub-czyz/</link>
+    <description>Recent content in Jakub Czyz on MANAF GHARAIBEH</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; {year}</copyright>
+    <lastBuildDate>Wed, 05 Nov 2014 00:00:00 -0700</lastBuildDate>
+    
+	<atom:link href="https://manafhgh.github.io/authors/jakub-czyz/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Taming the 800 Pound Gorilla: The Rise and Decline of NTP DDoS Attacks</title>
+      <link>https://manafhgh.github.io/publication/the-rise-and-decline-of-ntp-ddos-attacks/</link>
+      <pubDate>Wed, 05 Nov 2014 00:00:00 -0700</pubDate>
+      
+      <guid>https://manafhgh.github.io/publication/the-rise-and-decline-of-ntp-ddos-attacks/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

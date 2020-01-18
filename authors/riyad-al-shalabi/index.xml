@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Riyad Al-Shalabi on MANAF GHARAIBEH</title>
+    <link>https://manafhgh.github.io/authors/riyad-al-shalabi/</link>
+    <description>Recent content in Riyad Al-Shalabi on MANAF GHARAIBEH</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; {year}</copyright>
+    <lastBuildDate>Thu, 06 Apr 2006 00:00:00 -0600</lastBuildDate>
+    
+	<atom:link href="https://manafhgh.github.io/authors/riyad-al-shalabi/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Arabic Text Categorization Using KNN Algorithm</title>
+      <link>https://manafhgh.github.io/publication/arabic-text-categorization-using-knn-algorithm/</link>
+      <pubDate>Thu, 06 Apr 2006 00:00:00 -0600</pubDate>
+      
+      <guid>https://manafhgh.github.io/publication/arabic-text-categorization-using-knn-algorithm/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
