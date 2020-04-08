@@ -27,7 +27,7 @@
   
     
   
-  <meta name="description" content="Many IP Geolocation services and applications assume that all IP addresses within the same /24 IPv4 prefix (a /24 block) reside in close physical proximity. For blocks that contain addresses in very different locations (such as blocks identifying network backbones), this assumption can result in a large geolocation error. In this paper we evaluate the co-location assumption. We first develop and validate a hierarchical clustering method to find clusters of IP addresses with similar observed delay measurements within /24 blocks. We validate our methodology against two ground-truth datasets, confirming that 93% of the identified multi-cluster blocks are true positives with multiple physical locations and an upper bound for false positives of only about 5.4%. We then apply our methodology to a large dataset of 1.41M /24 blocks extracted from a delay-measurement study of the entire responsive IPv4 address space. We find that about 247K (17%) out of 1.41M blocks are not co-located, thus quantifying the error in the /24 block co-location assumption.">
+  <meta name="description" content="Some IP blocks occasionally change their physical location, such as when blocks are transferred to different organizations, or repurposed within an organization. IP geolocation systems need to identify such changes to provide accurate results for location-dependent applications such as geo-blocking and online fraud prevention. We propose an efficient method to identify IP blocks that move, since full geolocation is expensive and unnecessary for blocks that do not move. Our approach uses persistent changes in latency as an indicator of block movement, tracking all ping-responsive IPv4 /24 blocks from a handful of globally distributed vantage points. We estimate around 2.1% of the 3.77M /24 blocks we studied have changed location at least once in the last 3 months of 2018. We find that the remaining blocks were consistently RTT-stable during the same period, suggesting that their locations were also stable. We validate a random sample of blocks we identify as moving and confirm 80% (41 of 51) through traceroutes.">
 
   
   <link rel="alternate" hreflang="en-us" href="https://manafhgh.github.io/publication/delay-based-identification-of-internet-block-movement/">
@@ -117,12 +117,12 @@
   <meta property="og:site_name" content="MANAF GHARAIBEH">
   <meta property="og:url" content="https://manafhgh.github.io/publication/delay-based-identification-of-internet-block-movement/">
   <meta property="og:title" content="Delay-Based Identification of Internet Block Movement | MANAF GHARAIBEH">
-  <meta property="og:description" content="Many IP Geolocation services and applications assume that all IP addresses within the same /24 IPv4 prefix (a /24 block) reside in close physical proximity. For blocks that contain addresses in very different locations (such as blocks identifying network backbones), this assumption can result in a large geolocation error. In this paper we evaluate the co-location assumption. We first develop and validate a hierarchical clustering method to find clusters of IP addresses with similar observed delay measurements within /24 blocks. We validate our methodology against two ground-truth datasets, confirming that 93% of the identified multi-cluster blocks are true positives with multiple physical locations and an upper bound for false positives of only about 5.4%. We then apply our methodology to a large dataset of 1.41M /24 blocks extracted from a delay-measurement study of the entire responsive IPv4 address space. We find that about 247K (17%) out of 1.41M blocks are not co-located, thus quantifying the error in the /24 block co-location assumption."><meta property="og:image" content="https://manafhgh.github.io/img/DSC_7890.jpg">
+  <meta property="og:description" content="Some IP blocks occasionally change their physical location, such as when blocks are transferred to different organizations, or repurposed within an organization. IP geolocation systems need to identify such changes to provide accurate results for location-dependent applications such as geo-blocking and online fraud prevention. We propose an efficient method to identify IP blocks that move, since full geolocation is expensive and unnecessary for blocks that do not move. Our approach uses persistent changes in latency as an indicator of block movement, tracking all ping-responsive IPv4 /24 blocks from a handful of globally distributed vantage points. We estimate around 2.1% of the 3.77M /24 blocks we studied have changed location at least once in the last 3 months of 2018. We find that the remaining blocks were consistently RTT-stable during the same period, suggesting that their locations were also stable. We validate a random sample of blocks we identify as moving and confirm 80% (41 of 51) through traceroutes."><meta property="og:image" content="https://manafhgh.github.io/img/DSC_7890.jpg">
   <meta property="og:locale" content="en-us">
   
   <meta property="article:published_time" content="2020-04-08T02:18:45-06:00">
   
-  <meta property="article:modified_time" content="2020-04-08T02:18:45-06:00">
+  <meta property="article:modified_time" content="2020-04-08T02:49:55-06:00">
   
 
   
@@ -335,7 +335,7 @@
 
 
 <meta content="2020-04-08 02:18:45 -0600 MDT" itemprop="datePublished">
-<meta content="2020-04-08 02:18:45 -0600 MDT" itemprop="dateModified">
+<meta content="2020-04-08 02:49:55 -0600 MDT" itemprop="dateModified">
 
 <div class="article-metadata">
 
@@ -390,6 +390,8 @@
 
 
 
+  
+
 
 
 
@@ -409,12 +411,10 @@
 
 
   
-    
-  
 
 
 
-<a class="btn btn-outline-primary my-1 mr-1" href="https://www.cs.colostate.edu/TechReports/Reports/2020/tr20-101.pdf" target="_blank" rel="noopener">
+<a class="btn btn-outline-primary my-1 mr-1" href="/publication/delay-based-identification-of-internet-block-movement/Delay-based-Identification-of-Internet-Block-Movement.pdf" target="_blank" rel="noopener">
   PDF
 </a>
 
@@ -426,6 +426,14 @@
 </button>
 
 
+
+  
+  
+    
+  
+<a class="btn btn-outline-primary my-1 mr-1" href="https://ant.isi.edu/datasets/outage/" target="_blank" rel="noopener">
+  Dataset
+</a>
 
 
 
@@ -451,7 +459,7 @@
 
     
     <h3>Abstract</h3>
-    <p class="pub-abstract" itemprop="text">Many IP Geolocation services and applications assume that all IP addresses within the same /24 IPv4 prefix (a /24 block) reside in close physical proximity. For blocks that contain addresses in very different locations (such as blocks identifying network backbones), this assumption can result in a large geolocation error. In this paper we evaluate the co-location assumption. We first develop and validate a hierarchical clustering method to find clusters of IP addresses with similar observed delay measurements within /24 blocks. We validate our methodology against two ground-truth datasets, confirming that 93% of the identified multi-cluster blocks are true positives with multiple physical locations and an upper bound for false positives of only about 5.4%. We then apply our methodology to a large dataset of 1.41M /24 blocks extracted from a delay-measurement study of the entire responsive IPv4 address space. We find that about 247K (17%) out of 1.41M blocks are not co-located, thus quantifying the error in the /24 block co-location assumption.</p>
+    <p class="pub-abstract" itemprop="text">Some IP blocks occasionally change their physical location, such as when blocks are transferred to different organizations, or repurposed within an organization. IP geolocation systems need to identify such changes to provide accurate results for location-dependent applications such as geo-blocking and online fraud prevention. We propose an efficient method to identify IP blocks that move, since full geolocation is expensive and unnecessary for blocks that do not move. Our approach uses persistent changes in latency as an indicator of block movement, tracking all ping-responsive IPv4 /24 blocks from a handful of globally distributed vantage points. We estimate around 2.1% of the 3.77M /24 blocks we studied have changed location at least once in the last 3 months of 2018. We find that the remaining blocks were consistently RTT-stable during the same period, suggesting that their locations were also stable. We validate a random sample of blocks we identify as moving and confirm 80% (41 of 51) through traceroutes.</p>
     
 
     
