@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; {year}</copyright>
-    <lastBuildDate>Mon, 20 Nov 2017 00:00:00 -0700</lastBuildDate>
+    <lastBuildDate>Mon, 20 Nov 2017 00:00:00 +0200</lastBuildDate>
     
 	<atom:link href="https://manafhgh.github.io/publication_types/1/index.xml" rel="self" type="application/rss+xml" />
     
@@ -15,7 +15,7 @@
     <item>
       <title>A Functional Approach to Scanner Detection</title>
       <link>https://manafhgh.github.io/publication/a-functional-approach-to-scanner-detection/</link>
-      <pubDate>Mon, 20 Nov 2017 00:00:00 -0700</pubDate>
+      <pubDate>Mon, 20 Nov 2017 00:00:00 +0200</pubDate>
       
       <guid>https://manafhgh.github.io/publication/a-functional-approach-to-scanner-detection/</guid>
       <description></description>
@@ -24,7 +24,7 @@
     <item>
       <title>A Look at Router Geolocation in Public and Commercial Databases</title>
       <link>https://manafhgh.github.io/publication/a-look-at-router-geolocation-in-public-and-commercial-databases/</link>
-      <pubDate>Sun, 01 Oct 2017 00:00:00 -0600</pubDate>
+      <pubDate>Sun, 01 Oct 2017 00:00:00 +0300</pubDate>
       
       <guid>https://manafhgh.github.io/publication/a-look-at-router-geolocation-in-public-and-commercial-databases/</guid>
       <description></description>
@@ -33,7 +33,7 @@
     <item>
       <title>Assessing Co-Locality of IP Blocks</title>
       <link>https://manafhgh.github.io/publication/assessing-co-locality-of-ip-blocks/</link>
-      <pubDate>Sun, 10 Apr 2016 00:00:00 -0600</pubDate>
+      <pubDate>Sun, 10 Apr 2016 00:00:00 +0300</pubDate>
       
       <guid>https://manafhgh.github.io/publication/assessing-co-locality-of-ip-blocks/</guid>
       <description></description>
@@ -42,7 +42,7 @@
     <item>
       <title>BotDigger: Detecting DGA Bots in a Single Network</title>
       <link>https://manafhgh.github.io/publication/botdigger-detecting-dga-bots-in-a-single-network/</link>
-      <pubDate>Thu, 07 Apr 2016 00:00:00 -0600</pubDate>
+      <pubDate>Thu, 07 Apr 2016 00:00:00 +0300</pubDate>
       
       <guid>https://manafhgh.github.io/publication/botdigger-detecting-dga-bots-in-a-single-network/</guid>
       <description></description>
@@ -51,7 +51,7 @@
     <item>
       <title>Taming the 800 Pound Gorilla: The Rise and Decline of NTP DDoS Attacks</title>
       <link>https://manafhgh.github.io/publication/the-rise-and-decline-of-ntp-ddos-attacks/</link>
-      <pubDate>Wed, 05 Nov 2014 00:00:00 -0700</pubDate>
+      <pubDate>Wed, 05 Nov 2014 00:00:00 +0200</pubDate>
       
       <guid>https://manafhgh.github.io/publication/the-rise-and-decline-of-ntp-ddos-attacks/</guid>
       <description></description>
@@ -60,7 +60,7 @@
     <item>
       <title>Arabic Text Categorization Using KNN Algorithm</title>
       <link>https://manafhgh.github.io/publication/arabic-text-categorization-using-knn-algorithm/</link>
-      <pubDate>Thu, 06 Apr 2006 00:00:00 -0600</pubDate>
+      <pubDate>Thu, 06 Apr 2006 00:00:00 +0300</pubDate>
       
       <guid>https://manafhgh.github.io/publication/arabic-text-categorization-using-knn-algorithm/</guid>
       <description></description>
