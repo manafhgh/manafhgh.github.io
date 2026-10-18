@@ -1,15 +1,40 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Authors on MANAF GHARAIBEH</title>
     <link>https://manafhgh.github.io/author/</link>
     <description>Recent content in Authors on MANAF GHARAIBEH</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>&amp;copy; {year}</copyright>
     
-	<atom:link href="https://manafhgh.github.io/author/index.xml" rel="self" type="application/rss+xml" />
+	    <atom:link href="https://manafhgh.github.io/author/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title></title>
+      <link>https://manafhgh.github.io/author/admin/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://manafhgh.github.io/author/admin/</guid>
+      <description>&lt;p&gt;I got my Ph.D. in Computer Science (Spring 2020) from &lt;a href=&#34;https://www.colostate.edu&#34;&gt;Colorado State
+University&lt;/a&gt; as a member of the
+NetSec group under the supervision of Prof. Christos Papadopoulos.&lt;/p&gt;
+&lt;p&gt;I am broadly interested in Internet measurement research.  My Ph.D. work explored
+leveraging delay measurement to characterize the visible IPv4 address space
+locality and movement to enable efficient, continuous IP geolocation at an
+Internet-wide scale. My work also explored devising a delay-based algorithm to
+identify cellular networks.  In addition to measurement research, I&amp;rsquo;m also
+interested in network security research. My previous work includes analyzing
+large-scale NTP DDoS reflection-attacks and
+detecting abnormal activities prior to DDoS attacks. I was also part of
+a work that identifies Domain Generation Algorithms (DGA) -based botnets.&lt;/p&gt;
+&lt;p&gt;My teaching experience includes undergraduate-level teaching for four years prior to
+joining the Ph.D. program at CSU.  My teaching experience also includes
+serving as the teaching assistant for graduate-level courses in the computer
+science department at CSU.&lt;/p&gt;
+</description>
+    </item>
     
   </channel>
 </rss>
