@@ -1,0 +1,20 @@
+[
+  {
+    "id": "linked",
+    "title": "Optional exercise: link objects into a chain",
+    "intro": "Apply objects and pointer links after studying dynamic memory. This is an optional extension, not a separate core lesson.",
+    "question": "Does a next pointer own or automatically construct the Node it points to?",
+    "answer": "No. A pointer stores an address. In this exercise the nodes are local objects, so their lifetimes are controlled by their scopes. Do not delete them.",
+    "exercise": {
+      "example": "linked-starter",
+      "task": "Connect a(10), b(20), and c(30) into a chain ending in nullptr. Implement printChain and countNodes, including an empty chain. Then insert extra(15) after a while preserving b and c.",
+      "hint": "Walk a const Node* until nullptr. For insertion, set extra.next to the old a.next before changing a.next to &extra.",
+      "solution": "\n#include <iostream>\nusing namespace std;\nclass Node {\npublic:\n    int value;\n    Node* next;\n    Node(int v, Node* n=nullptr) : value(v), next(n) {}\n};\nint countNodes(const Node* head) {\n    int count=0;\n    while (head!=nullptr) { ++count; head=head->next; }\n    return count;\n}\nvoid printChain(const Node* head) {\n    while (head!=nullptr) { cout << head->value << ' '; head=head->next; }\n    cout << '\\n';\n}\nint main() {\n    Node a(10), b(20), c(30), extra(15);\n    a.next=&b; b.next=&c; // c.next is already nullptr.\n    printChain(&a);\n    cout << \"Count: \" << countNodes(&a) << '\\n';\n    cout << \"Empty count: \" << countNodes(nullptr) << '\\n';\n    extra.next=a.next; // Preserve the old successor first.\n    a.next=&extra;\n    printChain(&a);\n    cout << \"After insertion: \" << countNodes(&a) << '\\n';\n    return 0;\n}\n",
+      "explanation": "The counts are 3, 0, and 4. The chains print 10 20 30 and then 10 15 20 30. Reversing the insertion assignments can create a self-loop or lose the remaining chain.",
+      "stdin": "",
+      "id": "practice-linked",
+      "output": "10 20 30 \nCount: 3\nEmpty count: 0\n10 15 20 30 \nAfter insertion: 4\n"
+    },
+    "number": 16
+  }
+]

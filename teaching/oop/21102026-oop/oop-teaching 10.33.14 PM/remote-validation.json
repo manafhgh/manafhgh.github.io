@@ -1,0 +1,37 @@
+[
+  {
+    "id": "e01",
+    "passed": true,
+    "code": 0,
+    "output": "Inside swapValue: 10 5\nAfter swapValue: 5 10\nAfter swapReference: 10 5\n",
+    "expected": "Inside swapValue: 10 5\nAfter swapValue: 5 10\nAfter swapReference: 10 5\n"
+  },
+  {
+    "id": "e16",
+    "passed": true,
+    "code": 0,
+    "output": "0 C\n32 F\n37.7778 C\n100 F\n\nArray temperatures:\n[0]\n-6.66667 C\n20 F\n-------\n[1]\n30 C\n86 F\n-------\n[2]\n0 C\n32 F\n-------\n-------\nArray temperatures average: 7.77778 C\n10 C\n50 F\n47.7778 C\n118 F\n",
+    "expected": "0 C\n32 F\n37.7778 C\n100 F\n\nArray temperatures:\n[0]\n-6.66667 C\n20 F\n-------\n[1]\n30 C\n86 F\n-------\n[2]\n0 C\n32 F\n-------\n-------\nArray temperatures average: 7.77778 C\n10 C\n50 F\n47.7778 C\n118 F\n"
+  },
+  {
+    "id": "e21",
+    "passed": true,
+    "code": 0,
+    "output": "70 80 90 average: 80\n75 80 90 average: 81.6667\n70 80 90 average: 80\n",
+    "expected": "70 80 90 average: 80\n75 80 90 average: 81.6667\n70 80 90 average: 80\n"
+  },
+  {
+    "id": "e28",
+    "passed": true,
+    "code": 0,
+    "output": "Drawing a rectangle\nCould not cast shape_ptr to a Circle\n",
+    "expected": "Drawing a rectangle\nCould not cast shape_ptr to a Circle\n"
+  },
+  {
+    "id": "e32",
+    "passed": true,
+    "code": 0,
+    "output": "Postfix result: Hazem 65\nAfter postfix: Hazem 66\nPrefix result: Hazem 67\nAfter input: Hazem 80\n",
+    "expected": "Postfix result: Hazem 65\nAfter postfix: Hazem 66\nPrefix result: Hazem 67\nAfter input: Hazem 80\n"
+  }
+]

@@ -1,0 +1,37 @@
+[
+  {
+    "id": "point-basics",
+    "passed": true,
+    "exit_code": 0,
+    "output": "(2,3)\n(0,0)\n(3,2)\n(8,0)\n",
+    "stderr": []
+  },
+  {
+    "id": "console-io",
+    "passed": true,
+    "exit_code": 0,
+    "output": "Enter your full name:\nEnter a grade from 0 to 100:\nManaf Gharaibeh: 85.5\n",
+    "stderr": []
+  },
+  {
+    "id": "text-files",
+    "passed": true,
+    "exit_code": 0,
+    "output": "Amal: 85\nLina: 92\nAverage: 88.5\n",
+    "stderr": []
+  },
+  {
+    "id": "checkpoint-solution",
+    "passed": true,
+    "exit_code": 0,
+    "output": "PASS: Default grade and name\nPASS: Constructor accepts a valid grade\nPASS: Both boundaries: 0 and 100\nPASS: Invalid updates preserve the previous grade\nPASS: Invalid initial grade keeps safe fallback\nPASS: Objects have independent state\nChecks passed: 6/6\nOOP_CHECKPOINT_PASS\n",
+    "stderr": []
+  },
+  {
+    "id": "checkpoint-starter",
+    "passed": true,
+    "exit_code": 1,
+    "output": "PASS: Default grade and name\nFAIL: Constructor accepts a valid grade\nFAIL: Both boundaries: 0 and 100\nFAIL: Invalid updates preserve the previous grade\nPASS: Invalid initial grade keeps safe fallback\nFAIL: Objects have independent state\nChecks passed: 2/6\n",
+    "stderr": []
+  }
+]

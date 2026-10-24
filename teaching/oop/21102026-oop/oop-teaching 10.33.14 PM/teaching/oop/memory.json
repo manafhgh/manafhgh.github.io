@@ -1,0 +1,239 @@
+[
+  {
+    "id": "pointers",
+    "title": "Memory walkthrough: pointers and reference aliases",
+    "kind": "pointers",
+    "intro": "Step through the same statements used in the runnable walkthrough below. Arrows mean \u201cstores the address of.\u201d A reference is shown as another name on the object it aliases\u2014not as a separately reseatable pointer.",
+    "steps": [
+      {
+        "code": "int x=5, y=10;",
+        "x": 5,
+        "y": 10,
+        "ptr": null,
+        "p2": null,
+        "ref": false,
+        "note": "x and y are two separate int objects with automatic storage duration."
+      },
+      {
+        "code": "int* ptr = &x;",
+        "x": 5,
+        "y": 10,
+        "ptr": "x",
+        "p2": null,
+        "ref": false,
+        "note": "ptr is a pointer object. Its value is the address of x. & takes an address; *ptr would access the int at that address."
+      },
+      {
+        "code": "int* p2 = ptr;",
+        "x": 5,
+        "y": 10,
+        "ptr": "x",
+        "p2": "x",
+        "ref": false,
+        "note": "Copying the pointer copies its address value, not the int. Both pointers now refer to x."
+      },
+      {
+        "code": "int& num = x;",
+        "x": 5,
+        "y": 10,
+        "ptr": "x",
+        "p2": "x",
+        "ref": true,
+        "note": "num is another name for x. The language does not require a separate storage cell for this reference."
+      },
+      {
+        "code": "*ptr = 100;",
+        "x": 100,
+        "y": 10,
+        "ptr": "x",
+        "p2": "x",
+        "ref": true,
+        "note": "Dereferencing ptr selects x. x becomes 100, and num observes that same object."
+      },
+      {
+        "code": "ptr = &y;",
+        "x": 100,
+        "y": 10,
+        "ptr": "y",
+        "p2": "x",
+        "ref": true,
+        "note": "Reseating ptr changes only ptr. p2 and the reference num still refer to x."
+      },
+      {
+        "code": "num = y;",
+        "x": 10,
+        "y": 10,
+        "ptr": "y",
+        "p2": "x",
+        "ref": true,
+        "note": "This copies 10 into x. It does not rebind num to y. Equal values do not mean two objects share storage."
+      },
+      {
+        "code": "*p2 = 42;",
+        "x": 42,
+        "y": 10,
+        "ptr": "y",
+        "p2": "x",
+        "ref": true,
+        "note": "p2 still points to x, so x becomes 42. y remains 10."
+      },
+      {
+        "code": "ptr = nullptr;",
+        "x": 42,
+        "y": 10,
+        "ptr": "null",
+        "p2": "x",
+        "ref": true,
+        "note": "ptr now has no target. x and y still exist. Never dereference a null pointer."
+      }
+    ]
+  },
+  {
+    "id": "dynamic",
+    "title": "Memory walkthrough: allocation, aliases, and deletion",
+    "kind": "dynamic",
+    "intro": "The pointer variables and dynamically allocated objects have separate lifetimes. \u201cHeap\u201d is the usual implementation term for dynamic storage; locations A and B are symbolic, not real addresses.",
+    "steps": [
+      {
+        "code": "int* p=nullptr; int* alias=nullptr;",
+        "p": "null",
+        "alias": "null",
+        "allocation": null,
+        "array": null,
+        "values": null,
+        "note": "Two pointer objects exist locally, but neither points to an allocation."
+      },
+      {
+        "code": "p = new int(7);",
+        "p": "A",
+        "alias": "null",
+        "allocation": {
+          "live": true,
+          "value": 7
+        },
+        "array": null,
+        "values": null,
+        "note": "new creates and initializes a dynamic int, then returns its address to p."
+      },
+      {
+        "code": "alias = p;",
+        "p": "A",
+        "alias": "A",
+        "allocation": {
+          "live": true,
+          "value": 7
+        },
+        "array": null,
+        "values": null,
+        "note": "Both pointers store the same address. There is still only one dynamically allocated int."
+      },
+      {
+        "code": "*alias = 12;",
+        "p": "A",
+        "alias": "A",
+        "allocation": {
+          "live": true,
+          "value": 12
+        },
+        "array": null,
+        "values": null,
+        "note": "The shared allocation changes to 12. Reading *p would also produce 12."
+      },
+      {
+        "code": "delete p;",
+        "p": "dangling-A",
+        "alias": "dangling-A",
+        "allocation": {
+          "live": false
+        },
+        "array": null,
+        "values": null,
+        "note": "The int\u2019s lifetime ends and its storage is released. p and alias still exist but are dangling; neither may be used to access the deleted int. The old value is deliberately no longer shown."
+      },
+      {
+        "code": "p = nullptr;",
+        "p": "null",
+        "alias": "dangling-A",
+        "allocation": {
+          "live": false
+        },
+        "array": null,
+        "values": null,
+        "note": "Resetting p changes only p. alias is still dangling. Do not dereference it."
+      },
+      {
+        "code": "alias = nullptr;",
+        "p": "null",
+        "alias": "null",
+        "allocation": {
+          "live": false
+        },
+        "array": null,
+        "values": null,
+        "note": "Both pointer objects are now null. Resetting pointers is separate from releasing an allocation."
+      },
+      {
+        "code": "int* values = new int[3]{1,2,3};",
+        "p": "null",
+        "alias": "null",
+        "allocation": {
+          "live": false
+        },
+        "array": {
+          "live": true,
+          "cells": [
+            1,
+            2,
+            3
+          ]
+        },
+        "values": "B",
+        "note": "new[] creates a contiguous array of three int elements. values points to its first element."
+      },
+      {
+        "code": "values[1] = 9;",
+        "p": "null",
+        "alias": "null",
+        "allocation": {
+          "live": false
+        },
+        "array": {
+          "live": true,
+          "cells": [
+            1,
+            9,
+            3
+          ]
+        },
+        "values": "B",
+        "note": "Index 1 is the second element. values[i] and *(values+i) refer to the same element within bounds."
+      },
+      {
+        "code": "delete[] values;",
+        "p": "null",
+        "alias": "null",
+        "allocation": {
+          "live": false
+        },
+        "array": {
+          "live": false
+        },
+        "values": "dangling-B",
+        "note": "delete[] releases the whole array. values still exists but is dangling. Match new[] with delete[], not delete."
+      },
+      {
+        "code": "values = nullptr;",
+        "p": "null",
+        "alias": "null",
+        "allocation": {
+          "live": false
+        },
+        "array": {
+          "live": false
+        },
+        "values": "null",
+        "note": "Both allocations have been released, and all three pointer variables have been reset. No pointer is dereferenced after deletion."
+      }
+    ]
+  }
+]

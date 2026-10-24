@@ -1,0 +1,362 @@
+[
+  {
+    "id": "e01",
+    "title": "Swap by value and by reference",
+    "topic": "functions",
+    "note": "Passing by value changes local copies. Passing by reference changes the caller\u2019s variables.",
+    "code": "#include <iostream>\nusing namespace std;\nvoid swapValue(int a, int b) {\n    int temp = a; a = b; b = temp; // Only the local copies change.\n    cout << \"Inside swapValue: \" << a << ' ' << b << '\\n';\n}\nvoid swapReference(int& a, int& b) {\n    int temp = a; a = b; b = temp; // a and b refer to the caller's variables.\n}\nint main() {\n    int x = 5, y = 10;\n    swapValue(x, y);\n    cout << \"After swapValue: \" << x << ' ' << y << '\\n';\n    swapReference(x, y);\n    cout << \"After swapReference: \" << x << ' ' << y << '\\n';\n}\n",
+    "stdin": "",
+    "output": "Inside swapValue: 10 5\nAfter swapValue: 5 10\nAfter swapReference: 10 5\n"
+  },
+  {
+    "id": "e02",
+    "title": "A reference to const",
+    "topic": "functions",
+    "note": "A const reference accepts variables and temporary values. A non-const lvalue reference cannot bind to a literal.",
+    "code": "#include <iostream>\nusing namespace std;\n//Note about functions that receives by reference:\n//If you need to pass a literal value such as 5\n//to the a function that receives by reference,\n//then you need to store it in a variable and pass\n//the variable,\n//or specify the parameter as a reference to const\n//data as in the function foo below:\nvoid foo(const int &x){\n   cout << x<<endl;\n}\n\nint main(){\n   int a=10;\n   foo(a);\n   foo(10);\n}\n",
+    "stdin": "",
+    "output": "10\n10\n"
+  },
+  {
+    "id": "e03",
+    "title": "Swap using pointers",
+    "topic": "functions",
+    "note": "Pass addresses with & and access the pointed-to values with *. This function requires two valid, non-null pointers.",
+    "code": "#include<iostream>\nusing namespace std;\n\n//introduction\n//functions\n   //call by address (using pointers)\n\nvoid swapVal(int *a, int *b){\n   int t = *a;\n   *a = *b;\n   *b = t;\n}\n\nint main(){\n  \n   int x=5,y=10;\n   swapVal(&x, &y);\n   cout << x << \" \" << y << endl;\n}\n",
+    "stdin": "",
+    "output": "10 5\n"
+  },
+  {
+    "id": "e04",
+    "title": "Function overloading",
+    "topic": "functions",
+    "note": "The argument types and number of arguments select the overload. The f suffix makes 2.5f a float.",
+    "code": "#include <iostream>\nusing namespace std;\n//functions\n   //Function overloading\nfloat sumVals(float a){\n   cout <<\"float version\\n\";\n   return a+a;\n}\n\nint sumVals(int a, int b){\n   cout << \"int version\\n\";\n   return a+b;\n}\nint main() {\n cout << sumVals(2.5f) << endl;\n cout << sumVals(3, 4) << endl;\n}\n",
+    "stdin": "",
+    "output": "float version\n5\nint version\n7\n"
+  },
+  {
+    "id": "e05",
+    "title": "Default arguments",
+    "topic": "functions",
+    "note": "Default values fill in omitted trailing arguments. The first argument is still required.",
+    "code": "#include<iostream>\nusing namespace std;\n//Functions\n   //default arguments\n   //Notes:\n       //only trailing arguments (most right)\n       // can have default values\n       //Default arguments are used in place of\n       // the missing trailing arguments \nvoid sum(int x, int y=10){\n   cout << x+y << endl;\n}\nint main(){\n   sum(5,20);//calls sum(5,20)\n   sum(5);//calls sum(5,10)\n   // sum(); // Intentional compile error: x has no default value.\n}\n",
+    "stdin": "",
+    "output": "25\n15\n"
+  },
+  {
+    "id": "e06",
+    "title": "Recursion and base cases",
+    "topic": "recursion",
+    "note": "The recursive call must move toward the base case. Printing after the recursive call produces ascending order.",
+    "code": "#include <iostream>\nusing namespace std;\n\n//Functions\n  //Recursion\n\nvoid printN(int n){\n   if(n<=0)\n       return;   \n   printN(n-1);\n   cout << n << \" \";\n\n}\n\nint sum(int n){\n   if(n<=0)\n       return 0;\n   return n+sum(n-1);\n}\n\nint main(){\n   printN(5);\n   cout << endl;\n\n   int result = sum(10);\n   cout << result << endl;\n}\n",
+    "stdin": "",
+    "output": "1 2 3 4 5 \n55\n"
+  },
+  {
+    "id": "e07",
+    "title": "Pointers and reference aliases",
+    "topic": "pointers",
+    "note": "A pointer can be reseated. A reference remains an alias for its original object; assigning through it changes that object.",
+    "code": "#include <iostream>\nusing namespace std;\nint main() {\n    int* empty = nullptr; // Initialize pointers; never dereference nullptr.\n    cout << boolalpha << \"Null pointer: \" << (empty == nullptr) << '\\n';\n    int x = 5, y = 10;\n    int* ptr = &x;\n    cout << \"*ptr: \" << *ptr << '\\n';\n    *ptr = 100;\n    cout << \"x: \" << x << '\\n';\n    ptr = &y; // ptr now points to y, rather than x.\n    int* p2 = ptr; // Both pointers now point to y.\n    cout << \"Same address: \" << (p2 == ptr) << '\\n';\n    int& num = x;\n    num = y; // Copies y's value into x; it does not reseat num.\n    cout << \"x: \" << x << \" y: \" << y << '\\n';\n    cout << \"Alias has same address: \" << (&num == &x) << '\\n';\n}\n",
+    "stdin": "",
+    "output": "Null pointer: true\n*ptr: 5\nx: 100\nSame address: true\nx: 10 y: 10\nAlias has same address: true\n"
+  },
+  {
+    "id": "e08",
+    "title": "Const data and const pointers",
+    "topic": "constants",
+    "note": "const int* protects data through the pointer; int* const protects the pointer itself.",
+    "code": "#include <iostream>\nusing namespace std;\nint main() {\n    const int z = 11;\n    int x = 400, y = 500;\n    const int* ptr = &z;\n    // *ptr = 22; // Compile error: cannot write through a pointer to const.\n    ptr = &x; // Allowed: ptr itself is not const.\n    cout << *ptr << '\\n';\n    int* const p = &x;\n    *p = 66; // Allowed: x is not const.\n    // p = &y; // Compile error: p cannot be reseated.\n    const int* const both = &y;\n    cout << *p << ' ' << *both << '\\n';\n}\n",
+    "stdin": "",
+    "output": "400\n66 500\n"
+  },
+  {
+    "id": "e09",
+    "title": "Scope, shadowing, and static locals",
+    "topic": "scope",
+    "note": "A local name can shadow a global name. ::x selects global x. A static local is initialized once and retains its value between calls.",
+    "code": "//Functions\n   //static variables\n   //scope rules\n#include <iostream>\nusing namespace std;\n\nint x = 5;//global\n\nvoid fun(){\n\n   cout << x << endl; //will print 5 (global x)\n   int x=100;\n   cout << x << endl; //will print 100 (local x)\n   cout << ::x << \"\\n\\n\"; //will print 5 (global x)\n}\n\nvoid foo(){\n\n   //Local non-static variables are declared and allocated memory\n   //space every time the function is called\n   //Static variable are declared using the keyword static\n   //They have static storage duration and are initialized once.\n   //they keep that space for the entirety of the program execution\n\n   int x = 1;\n   static int y=1; \n\n   cout << x << \" \" << y << endl;\n\n   x++;\n   y++;\n}\n\nint main(){\n   fun();\n\n   //what is the output of executing:\n   foo();\n   foo();\n   foo();\n}\n",
+    "stdin": "",
+    "output": "5\n100\n5\n\n1 1\n1 2\n1 3\n"
+  },
+  {
+    "id": "e10",
+    "title": "Array initialization and two ways to sum",
+    "topic": "arrays",
+    "note": "Unspecified elements in an initialized array become zero. sizeof is an operator; this size calculation works on the actual array, not an array parameter.",
+    "code": "#include <iostream>\nusing namespace std;\nvoid printArray(const int a[], int n) {\n    for (int i = 0; i < n; ++i) cout << a[i] << ' ';\n    cout << '\\n';\n}\nint sumArray_iterative(const int a[], int n) {\n    int total = 0;\n    for (int i = 0; i < n; ++i) total += a[i];\n    return total;\n}\nint sumArray_recursive(const int a[], int n) {\n    if (n <= 0) return 0;\n    return a[n - 1] + sumArray_recursive(a, n - 1);\n}\nint main() {\n    constexpr int SIZE = 5;\n    int a1[SIZE] = {1, 2, 5}; // {1, 2, 5, 0, 0}\n    int a2[] = {1, 2, 5}; // Three elements, not five.\n    printArray(a1, SIZE);\n    cout << \"a2 size: \" << sizeof(a2) / sizeof(a2[0]) << '\\n';\n    cout << \"Recursive sum: \" << sumArray_recursive(a1, SIZE) << '\\n';\n    cout << \"Iterative sum: \" << sumArray_iterative(a1, SIZE) << '\\n';\n}\n",
+    "stdin": "",
+    "output": "1 2 5 0 0 \na2 size: 3\nRecursive sum: 8\nIterative sum: 8\n"
+  },
+  {
+    "id": "point-basics",
+    "title": "Point: build two independent objects",
+    "topic": "classes",
+    "note": "Run this after predicting the output. Each object has its own x and y values. The same member functions operate on the object named to the left of the dot.",
+    "code": "#include <iostream>\nusing namespace std;\nclass Point {\nprivate:\n    int x, y;\npublic:\n    Point(int initialX=0, int initialY=0) : x(initialX), y(initialY) {}\n    int getX() const { return x; }\n    int getY() const { return y; }\n    void setX(int value) { x=value; }\n    void setY(int value) { y=value; }\n    void moveBy(int dx, int dy) { x+=dx; y+=dy; }\n    void print() const { cout << '(' << x << ',' << y << \")\\n\"; }\n};\nint main() {\n    Point p1(2,3), p2;\n    p1.print();\n    p2.print();\n    p2.setX(8);\n    p1.moveBy(1,-1);\n    p1.print();\n    p2.print();\n    return 0;\n}\n",
+    "stdin": "",
+    "output": "(2,3)\n(0,0)\n(3,2)\n(8,0)\n"
+  },
+  {
+    "id": "student-validation",
+    "title": "Student: protect a grade invariant",
+    "topic": "classes",
+    "note": "An invariant is a rule that should remain true for every valid object. Here grade always stays in [0,100]. Invalid updates return false and preserve the previous value. An invalid initial grade leaves the fallback grade of 0.",
+    "code": "#include <iostream>\n#include <string>\nusing namespace std;\nclass Student {\nprivate:\n    string name;\n    int grade;\npublic:\n    Student(string studentName, int initialGrade=0) : name(studentName), grade(0) {\n        setGrade(initialGrade);\n    }\n    string getName() const { return name; }\n    int getGrade() const { return grade; }\n    bool setGrade(int value) {\n        if (value < 0 || value > 100) return false;\n        grade=value;\n        return true;\n    }\n};\nint main() {\n    Student a(\"Amal\",85), b(\"Lina\");\n    cout << a.getName() << \": \" << a.getGrade() << '\\n';\n    cout << b.getName() << \": \" << b.getGrade() << '\\n';\n    bool accepted=a.setGrade(120);\n    cout << boolalpha << \"Accepted 120: \" << accepted << '\\n';\n    cout << \"Amal's grade is still \" << a.getGrade() << '\\n';\n    return 0;\n}\n",
+    "stdin": "",
+    "output": "Amal: 85\nLina: 0\nAccepted 120: false\nAmal's grade is still 85\n"
+  },
+  {
+    "id": "e11",
+    "title": "Point: encapsulation and member functions",
+    "topic": "classes",
+    "note": "Private coordinates are accessed through a public interface. Queries are const; const references avoid unnecessary copies.",
+    "code": "#include <iostream>\n#include <cmath>\nusing namespace std;\nclass Point {\nprivate:\n    double x, y;\npublic:\n    Point(double xx = 0, double yy = 0) : x(xx), y(yy) {}\n    void setX(double xx) { x = xx; }\n    void setY(double yy) { y = yy; }\n    double getX() const { return x; }\n    double getY() const { return y; }\n    void printPoint() const { cout << '(' << x << ',' << y << \")\\n\"; }\n    int whichQuadrant() const {\n        if (x > 0 && y > 0) return 1;\n        if (x < 0 && y > 0) return 2;\n        if (x < 0 && y < 0) return 3;\n        if (x > 0 && y < 0) return 4;\n        return -1; // On an axis, including the origin.\n    }\n    double distanceMember(const Point& other) const {\n        const double dx = other.x - x, dy = other.y - y;\n        return sqrt(dx * dx + dy * dy);\n    }\n};\ndouble distance(const Point& a, const Point& b) {\n    const double dx = b.getX() - a.getX(), dy = b.getY() - a.getY();\n    return sqrt(dx * dx + dy * dy);\n}\n\nint main() {\n    Point p1(-3, 0), p2;\n    p1.printPoint(); p2.printPoint();\n    p2.setX(4); p2.printPoint();\n    cout << \"Quadrant: \" << p1.whichQuadrant() << '\\n';\n    cout << \"Non-member distance: \" << distance(p1, p2) << '\\n';\n    cout << \"Member distance: \" << p1.distanceMember(p2) << '\\n';\n}\n",
+    "stdin": "",
+    "output": "(-3,0)\n(0,0)\n(4,0)\nQuadrant: -1\nNon-member distance: 7\nMember distance: 7\n"
+  },
+  {
+    "id": "e12",
+    "title": "Point: copying and destruction",
+    "topic": "lifetime",
+    "note": "Passing by value makes a copy of this lvalue. Local objects are destroyed in reverse construction order. Return-value copy elision can remove copies in other contexts.",
+    "code": "#include <iostream>\nusing namespace std;\nclass Point {\n    double x, y;\npublic:\n    Point(double xx=0, double yy=0) : x(xx), y(yy) {\n        cout << \"Construct \"; printPoint();\n    }\n    Point(const Point& p) : x(p.x), y(p.y) {\n        cout << \"Copy \"; printPoint();\n    }\n    ~Point() { cout << \"Destroy \"; printPoint(); }\n    void printPoint() const { cout << '(' << x << ',' << y << \")\\n\"; }\n};\nvoid byValue(Point p) { cout << \"In byValue \"; p.printPoint(); }\nvoid byReference(const Point& p) { cout << \"In byReference \"; p.printPoint(); }\nint main() {\n    Point p1(1, 2);\n    byValue(p1);\n    byReference(p1);\n    Point p2(p1); // Explicit copy construction.\n}\n",
+    "stdin": "",
+    "output": "Construct (1,2)\nCopy (1,2)\nIn byValue (1,2)\nDestroy (1,2)\nIn byReference (1,2)\nCopy (1,2)\nDestroy (1,2)\nDestroy (1,2)\n"
+  },
+  {
+    "id": "e13",
+    "title": "Point: interface and implementation",
+    "topic": "interface",
+    "note": "Declarations describe the interface; definitions implement it. This runnable version combines the three files. The download includes a real point.h, point.cpp, and main.cpp project.",
+    "code": "#include <iostream>\n#include <cmath>\n// point.h: normally protected by an include guard.\nclass Point {\n    double x, y;\npublic:\n    Point(double xx=0, double yy=0);\n    double distanceTo(const Point& other) const;\n};\n// point.cpp: normally includes \"point.h\".\nPoint::Point(double xx, double yy) : x(xx), y(yy) {}\ndouble Point::distanceTo(const Point& other) const {\n    double dx=other.x-x, dy=other.y-y;\n    return std::sqrt(dx*dx+dy*dy);\n}\n// main.cpp: normally includes \"point.h\".\nint main() {\n    Point origin, p(3,4);\n    std::cout << p.distanceTo(origin) << '\\n';\n}\n",
+    "stdin": "",
+    "output": "5\n"
+  },
+  {
+    "id": "e14",
+    "title": "Student: arrays of objects",
+    "topic": "object-arrays",
+    "note": "An array constructs every element. Copy construction and assignment are different operations. This example consistently validates GPA on a 0\u2013100 scale.",
+    "code": "#include<iostream>\n#include<string>\nusing namespace std;\n\n\nclass Student{\nprivate:\n   string fname;\n   string lname;\n   float gpa;\n\npublic:\n   //parametrized constructor\n   //Also callable as a default constructor; not a = default declaration.\n   Student(string=\"NA\",string=\"NA\",float=0);\n\n   //copy constructor\n   Student(const Student &stC);\n   Student& operator=(const Student&) = default; // Memberwise assignment is sufficient here.\n\n   void print_student() const//you can define the function here or\n                       //outside the class\n   {\n       cout << fname<<\" \" << lname << \" \" << gpa<<endl;\n   }\n\n   //setters\n   void setGPA(float g); //or have the declaration here and\n                         //the implementation outside the class\n   void set_fname(string fn);\n   void set_lname(string ln);\n};\n\nStudent::Student(string fname,string lname,float g)\n{\n   this->fname=fname;\n   this->lname=lname;\n   gpa=0;\n   setGPA(g);\n   //cout<<\"this from constructor: \" << this << endl;\n}\n\nStudent::Student(const Student &stC)\n:fname(stC.fname),lname(stC.lname),gpa(stC.gpa)\n{\n   cout << \"COPY CONSTRUCTOR\\n\";\n}\n\nvoid Student::setGPA(float g){\n   if(g>=0&&g<=100) //some validation\n       gpa=g;\n   else\n       cout << \"Invalid GPA\\n\";\n}\n\nvoid Student::set_fname(string fn){\n       fname=fn;\n}\n\nvoid Student::set_lname(string ln){\n   lname = ln;\n}\n\nvoid printStArr(const Student st[], int size){\n   for(int i=0;i<size;i++)\n       st[i].print_student();\n}\n\nint main(){\n   Student s1(\"Samah\");\n\n   const int SIZE=3;\n   Student sec3[SIZE]={s1,Student(\"Salem\",\"Adnan\",70)};\n\n   sec3[2]=Student(\"Maha\",\"Salem\",80);\n\n   printStArr(sec3,SIZE);\n}\n",
+    "stdin": "",
+    "output": "COPY CONSTRUCTOR\nSamah NA 0\nSalem Adnan 70\nMaha Salem 80\n"
+  },
+  {
+    "id": "e15",
+    "title": "Point: closest object to the origin",
+    "topic": "object-arrays",
+    "note": "A complete solution to your array exercise. The function requires a nonempty array and chooses the first point when distances tie.",
+    "code": "#include <iostream>\n#include <cmath>\nusing namespace std;\nclass Point {\nprivate:\n    double x, y;\npublic:\n    Point(double xx = 0, double yy = 0) : x(xx), y(yy) {}\n    void setX(double xx) { x = xx; }\n    void setY(double yy) { y = yy; }\n    double getX() const { return x; }\n    double getY() const { return y; }\n    void printPoint() const { cout << '(' << x << ',' << y << \")\\n\"; }\n    int whichQuadrant() const {\n        if (x > 0 && y > 0) return 1;\n        if (x < 0 && y > 0) return 2;\n        if (x < 0 && y < 0) return 3;\n        if (x > 0 && y < 0) return 4;\n        return -1; // On an axis, including the origin.\n    }\n    double distanceMember(const Point& other) const {\n        const double dx = other.x - x, dy = other.y - y;\n        return sqrt(dx * dx + dy * dy);\n    }\n};\ndouble distance(const Point& a, const Point& b) {\n    const double dx = b.getX() - a.getX(), dy = b.getY() - a.getY();\n    return sqrt(dx * dx + dy * dy);\n}\n\nPoint closestToOrigin(const Point points[], int size) {\n    // Precondition: size > 0 and points contains at least size elements.\n    Point origin;\n    int best = 0;\n    for (int i = 1; i < size; ++i)\n        if (points[i].distanceMember(origin) < points[best].distanceMember(origin))\n            best = i;\n    return points[best]; // Return a value; no dangling reference.\n}\nint main() {\n    Point points[5] = {{3,4}, {1,1}, {-4,2}, {0,3}, {5,0}};\n    closestToOrigin(points, 5).printPoint();\n}\n",
+    "stdin": "",
+    "output": "(1,1)\n"
+  },
+  {
+    "id": "e16",
+    "title": "Temperature: const members and unit conversion",
+    "topic": "temperature",
+    "note": "A const scale is initialized in the initializer list. Absolute readings use the 32-degree offset; temperature differences do not. An 18\u00b0F increase is a 10\u00b0C increase.",
+    "code": "#include <iostream>\n#include <stdexcept>\nusing namespace std;\n\nclass Temperature{\nprivate:\n   const char scale_type; //(F)ahrenheit or (C)elsius\n   float reading;\n\npublic:\n   Temperature();\n   Temperature(char, float);\n   void printT()const;\n   char get_type()const;\n   float get_reading()const;\n   void changeT(char, float d);\n};\n\nTemperature::Temperature() :scale_type('C')\n{\n   reading = 0;\n}\n\nTemperature::Temperature(char t, float r)\n:scale_type(t),reading(r)\n{\n    if (t != 'C' && t != 'F') throw invalid_argument(\"Use C or F\");\n}\n\nvoid Temperature::printT() const {\n   if(scale_type=='C'){\n       cout << reading << \" \" << scale_type << endl;\n       cout << reading * 9/5 + 32 << \" F\\n\";\n   }\n   else{\n       cout << (reading - 32) * 5/9 << \" C\\n\";\n       cout << reading << \" F\\n\";\n   }\n}\n\nchar Temperature::get_type() const {\n   return scale_type;\n}\n\nfloat Temperature::get_reading()const{\n   return reading;\n}\n\n//If the scale type is 'C' and t is 'C'\n//or scale type is 'F' and t is 'F'\n//then just add d to the current reading\n//else, convert 'd' properly then add it to\n//the current reading.\nvoid Temperature::changeT(char t, float d){\n   if (t != 'C' && t != 'F') throw invalid_argument(\"Use C or F\");\n   if(t==scale_type)\n       reading += d;\n   else if(scale_type=='C'){ // t must be 'F'\n       reading += d * 5.0f/9.0f; // A change in temperature has no 32-degree offset.\n   } else{ //t must be 'C'\n       reading += d * 9.0f/5.0f; // Convert the change, not an absolute reading.\n   }\n}\n\n\nvoid printTemArray(const Temperature t[], int size){\n   for(int i=0;i<size;i++){\n       cout <<\"[\"<<i<<\"]\\n\";\n       t[i].printT();\n       cout << \"-------\\n\";\n   }\n   cout << \"-------\\n\";\n}\n\n//A non-member function to compute\n//the average (in Celsius) of temperatures\n//in an array of temperatures.\n//The temperatures in the array could be\n//a mix of Fahrenheit and Celsius readings\n//so those in Fahrenheit need to be converted\nfloat tempAvgArray(const Temperature t[],int size){\n   if (size <= 0) throw invalid_argument(\"Average requires a nonempty array\");\n   float sum = 0;\n   for(int i=0;i<size;i++){\n       if(t[i].get_type()=='C')\n           sum+=t[i].get_reading();\n       else\n           sum += (t[i].get_reading() - 32) * 5/9;\n   }\n   return sum/size;\n}\n\nint main(){\n   Temperature t1;\n   t1.printT();\n\n   Temperature t2('F',100);\n   t2.printT();\n\n   Temperature tArr[3]={Temperature('F', 20),Temperature('C',30)};\n   cout<<\"\\nArray temperatures:\\n\";\n   printTemArray(tArr,3);\n\n   float avgT= tempAvgArray(tArr,3);\n   cout << \"Array temperatures average: \" << avgT << \" C\\n\";\n\n   t1.changeT('F', 18);\n   t1.printT();\n\n   t2.changeT('F', 18);\n   t2.printT();\n}\n",
+    "stdin": "",
+    "output": "0 C\n32 F\n37.7778 C\n100 F\n\nArray temperatures:\n[0]\n-6.66667 C\n20 F\n-------\n[1]\n30 C\n86 F\n-------\n[2]\n0 C\n32 F\n-------\n-------\nArray temperatures average: 7.77778 C\n10 C\n50 F\n47.7778 C\n118 F\n"
+  },
+  {
+    "id": "e17",
+    "title": "Box: const objects and shared static members",
+    "topic": "static",
+    "note": "Static data belongs to the class. Constructors increase the live-object count, and the destructor decreases it. A const method can modify static data, but that does not make arbitrary counter changes meaningful.",
+    "code": "#include<iostream>\n#include<string>\nusing namespace std;\n\nclass Box{\nprivate:\n   const string color;\n   float length;\n   float width;\n   float height;\n\n   static int count; //declaration of a static data member\n                     //we must define it outside the class\n                     //static members are common to all objects\n                     //there will be only one \"count\" data member\n                     //regardless of how many objects are declared\n                     //static members are independent of any object\n\npublic:\n   Box(float length=1, float width =1, float height=1,string color=\"red\")\n   :color(color)//must use an initializer list\n                //to initialize const data members\n                //(before the body of theconstructor)\n   {\n       this->length = length; //this->length: length of the calling object\n       this->width = width;\n       this->height=height;\n       count+=1;\n   }\n\n   Box(const Box& b):color(b.color) {\n       length=b.length;\n       width=b.width;\n       height=b.height;\n       count+=1;\n   }\n\n   ~Box() { --count; } // Track live objects, including copies.\n   double volume() const\n   {  \n       return length*width*height;\n   }\n\n   // Demonstration only: changing the counter breaks its meaning as a count.\n   void modifyCount() const{\n       count = count * 2;//ok: const member functions CAN\n                         //modify static data members\n       //length = length * 2; //error: they cannot modify\n                            //non-static data members\n       //changeLength(5); //error: const member functions cannot\n                        //call non-const member functions\n       printData();//ok\n   }\n\n   void printData() const {\n       cout << length << \" \" << width << \" \" << height\n       << \" \" << color << endl;\n       cout <<\"count of Box objects: \" << count <<endl;\n   }\n\n   void changeLength(float v) {\n       length+=v;\n   }\n\n   static int getCount(){\n       //cout << length; error: accessing non static member\n       return count;\n   }\n\n};\n\nint Box::count; //defining the static data member\n               //by default, count will be initialized to zero\n\n\nint main(){\n   cout <<\"Count: \" << Box::getCount()<<endl;//accessing a static\n                       //member using class name even before\n                       //any object is declared\n   const Box b1;\n   Box b2(3,4,5,\"Yellow\");\n   Box b3(b1);\n   b3.printData();\n   cout << \"Count: \" << b1.getCount() << endl; //accessing a static\n                        //member using an object, we will get the\n                        //same result if we use b2 or b3\n\n}\n",
+    "stdin": "",
+    "output": "Count: 0\n1 1 1 red\ncount of Box objects: 3\nCount: 3\n"
+  },
+  {
+    "id": "e18",
+    "title": "Line: composition with two Points",
+    "topic": "composition",
+    "note": "A Line has two Point objects. Member objects are constructed in declaration order before the constructor body, regardless of initializer-list order.",
+    "code": "#include <iostream>\n#include <cmath>\nusing namespace std;\nclass Point {\nprivate:\n    double x, y;\npublic:\n    Point(double xx = 0, double yy = 0) : x(xx), y(yy) {}\n    void setX(double xx) { x = xx; }\n    void setY(double yy) { y = yy; }\n    double getX() const { return x; }\n    double getY() const { return y; }\n    void printPoint() const { cout << '(' << x << ',' << y << \")\\n\"; }\n    int whichQuadrant() const {\n        if (x > 0 && y > 0) return 1;\n        if (x < 0 && y > 0) return 2;\n        if (x < 0 && y < 0) return 3;\n        if (x > 0 && y < 0) return 4;\n        return -1; // On an axis, including the origin.\n    }\n    double distanceMember(const Point& other) const {\n        const double dx = other.x - x, dy = other.y - y;\n        return sqrt(dx * dx + dy * dy);\n    }\n};\ndouble distance(const Point& a, const Point& b) {\n    const double dx = b.getX() - a.getX(), dy = b.getY() - a.getY();\n    return sqrt(dx * dx + dy * dy);\n}\n\nclass Line {\n    Point start, end; // Composition: two objects, not two pointers.\npublic:\n    Line(const Point& a, const Point& b) : start(a), end(b) {}\n    double length() const { return start.distanceMember(end); }\n};\nint main() {\n    Point a(0,0), b(3,4);\n    Line line(a,b);\n    cout << \"Length: \" << line.length() << '\\n';\n}\n",
+    "stdin": "",
+    "output": "Length: 5\n"
+  },
+  {
+    "id": "e19",
+    "title": "Nodes and a linked chain",
+    "topic": "linked",
+    "note": "next is a pointer, not a nested Node object. The stack objects own their own lifetimes; these links do not allocate or own nodes.",
+    "code": "#include <iostream>\nusing namespace std;\n\nclass Node{\n  public:\n    int val;\n    Node * next; \n//next is a pointer (not an object), \n//it will not invoke the Node constructor\n    \n    Node(int val, Node * next) {\n      this->val = val;\n      this->next = next;\n    }\n};\n\n\nint main(){\n\n    Node n1(100,nullptr);\n    Node n2(500,nullptr);\n    Node n3(700,nullptr);\n    Node n0(300,&n1); \n    \n    n1.next=&n2; //next of Node n1 points to Node n2 \n                 //(i.e., contains the address of n2)\n    n2.next=&n3;\n    n3.next=nullptr; //next of n3 is is assigned nullptr\n                     //(could also be: 0, NULL)\n    //assigning null to a pointer means it does not point \n    //to any location in memory\n    \n    Node * curr = &n0;\n    \n    while(curr != nullptr){\n      cout << curr->val << \" \";\n      curr = curr->next;\n    }\n    cout << \"\\n\";\n    return 0;\n}\n",
+    "stdin": "",
+    "output": "300 100 500 700 \n"
+  },
+  {
+    "id": "e20",
+    "title": "Dynamic arrays and dynamic objects",
+    "topic": "dynamic",
+    "note": "Match new with delete and new[] with delete[]. Do not overwrite the only owning pointer before releasing its allocation. Never delete an address of a local variable.",
+    "code": "#include <iostream>\n#include <cmath>\nusing namespace std;\nclass Point {\nprivate:\n    double x, y;\npublic:\n    Point(double xx = 0, double yy = 0) : x(xx), y(yy) {}\n    void setX(double xx) { x = xx; }\n    void setY(double yy) { y = yy; }\n    double getX() const { return x; }\n    double getY() const { return y; }\n    void printPoint() const { cout << '(' << x << ',' << y << \")\\n\"; }\n    int whichQuadrant() const {\n        if (x > 0 && y > 0) return 1;\n        if (x < 0 && y > 0) return 2;\n        if (x < 0 && y < 0) return 3;\n        if (x > 0 && y < 0) return 4;\n        return -1; // On an axis, including the origin.\n    }\n    double distanceMember(const Point& other) const {\n        const double dx = other.x - x, dy = other.y - y;\n        return sqrt(dx * dx + dy * dy);\n    }\n};\ndouble distance(const Point& a, const Point& b) {\n    const double dx = b.getX() - a.getX(), dy = b.getY() - a.getY();\n    return sqrt(dx * dx + dy * dy);\n}\n\nint main() {\n    int size = 5;\n    double* values = new double[size]{}; // Value-initialize every element to zero.\n    values[0] = 10; values[1] = 22.44;\n    *(values + 3) = 11.11;\n    for (int i=0; i<size; ++i) cout << values[i] << ' ';\n    cout << '\\n';\n    delete[] values;\n    values = nullptr; // Avoid retaining this dangling pointer.\n    int* ptr = new int(300);\n    cout << *ptr << '\\n';\n    delete ptr; // Release the allocation before reusing ptr.\n    int x = 333;\n    ptr = &x; // Non-owning pointer to a local object. Do not delete ptr now.\n    cout << *ptr << '\\n';\n    Point p1(4,15), p2(30,40);\n    Point* a = new Point;\n    Point* b = new Point(p1);\n    a->printPoint(); b->printPoint();\n    delete a; delete b;\n    Point* points = new Point[5]{{2,3}, {20,40}, p2};\n    points[4] = p1;\n    for (int i=0; i<5; ++i) points[i].printPoint();\n    delete[] points;\n}\n",
+    "stdin": "",
+    "output": "10 22.44 0 11.11 0 \n300\n333\n(0,0)\n(4,15)\n(2,3)\n(20,40)\n(30,40)\n(0,0)\n(4,15)\n"
+  },
+  {
+    "id": "e21",
+    "title": "Student: owning a dynamic grade array",
+    "topic": "ownership",
+    "note": "An owning raw pointer needs destruction and independent copies. This Rule of Three example initializes grades, validates input, and implements copy construction and copy assignment. In production, prefer std::vector for Rule of Zero ownership.",
+    "code": "#include <iostream>\n#include <algorithm>\n#include <stdexcept>\nusing namespace std;\nclass Student {\n    int numberOfGrades;\n    double* grades;\npublic:\n    explicit Student(int n=3) : numberOfGrades(n), grades(nullptr) {\n        if (n <= 0) throw invalid_argument(\"Grade count must be positive\");\n        grades = new double[n]{};\n    }\n    ~Student() { delete[] grades; }\n    Student(const Student& other) : Student(other.numberOfGrades) {\n        copy(other.grades, other.grades + numberOfGrades, grades);\n    }\n    Student& operator=(const Student& other) {\n        if (this != &other) {\n            // Allocate first: if allocation fails, this object's data survives.\n            double* replacement = new double[other.numberOfGrades];\n            copy(other.grades, other.grades + other.numberOfGrades, replacement);\n            delete[] grades;\n            grades = replacement;\n            numberOfGrades = other.numberOfGrades;\n        }\n        return *this;\n    }\n    void setGrades(istream& in) {\n        for (int i=0; i<numberOfGrades; ++i) {\n            double value;\n            if (!(in >> value) || !(value >= 0 && value <= 100))\n                throw invalid_argument(\"Expected grades in [0,100]\");\n            grades[i] = value;\n        }\n    }\n    void changeGrade(double delta, int index) {\n        if (index < 0 || index >= numberOfGrades) throw out_of_range(\"Grade index\");\n        double value = grades[index] + delta;\n        if (!(value >= 0 && value <= 100)) throw invalid_argument(\"Grade range\");\n        grades[index] = value;\n    }\n    double avg() const {\n        double total=0;\n        for (int i=0; i<numberOfGrades; ++i) total += grades[i];\n        return total / numberOfGrades;\n    }\n    void printStudent() const {\n        for (int i=0; i<numberOfGrades; ++i) cout << grades[i] << ' ';\n        cout << \"average: \" << avg() << '\\n';\n    }\n};\nint main() {\n    try {\n        Student a(3);\n        a.setGrades(cin); // Enter all three grades in the input box before Run.\n        Student b(a); // Deep copy: b owns a separate array.\n        b.changeGrade(5,0);\n        Student c;\n        c = a; // Deep-copy assignment, not copy construction.\n        a.printStudent(); b.printStudent(); c.printStudent();\n    } catch (const exception& error) {\n        cerr << error.what() << '\\n';\n        return 1;\n    }\n}\n",
+    "stdin": "70 80 90\n",
+    "output": "70 80 90 average: 80\n75 80 90 average: 81.6667\n70 80 90 average: 80\n"
+  },
+  {
+    "id": "e22",
+    "title": "A friend function of two classes",
+    "topic": "friends",
+    "note": "The forward declaration makes ClassB known. Friendship grants this specific function access; it does not make the function a member.",
+    "code": "// A friend function of two classes\n// Add members of two different classes\n// using friend functions\n\n#include <iostream>\nusing namespace std;\n\n// forward class declaration\nclass ClassB;\n\nclass ClassA {\n   public:\n      // constructor to initialize numA to 500\n      ClassA() : numA(500) {}\n    \n  private:\n      int numA;\n    \n  // friend function declaration\n  // can be placed anywhere in the class\n  // it would still mean the same\n  friend int add(const ClassA &, const ClassB &);\n};\n\nclass ClassB {\n\n  public:\n      // constructor to initialize numB to 166\n      ClassB() : numB(166) {}\n   private:\n      int numB;\n      // friend function declaration\n      friend int add(const ClassA &, const ClassB &); \n};\n\n// access members of both classes\nint add(const ClassA &objectA, const ClassB &objectB) {\n  return (objectA.numA + objectB.numB);\n}\n\nint main() {\n  ClassA objectA;\n  ClassB objectB;\n  cout << \"Sum: \" << add(objectA, objectB) << endl;\n  return 0;\n}\n",
+    "stdin": "",
+    "output": "Sum: 666\n"
+  },
+  {
+    "id": "e23",
+    "title": "A friend class",
+    "topic": "friends",
+    "note": "Every member of B can access A\u2019s private data. Friendship is neither reciprocal, transitive, nor inherited.",
+    "code": "#include<iostream>\nusing namespace std;\n\nclass A{\nfriend class B;//can be placed anywhere in the class\npublic:\n   A(){\n       x=5;\n   }\n   void printX(){\n       cout << x << endl;\n   }\nprivate:\n   int x;\n};\n\n//all member function of class B are\n//friend functions of class A\n//they can access private, protected, and public\n//members of class A\nclass B{\npublic:\n   void changeX(A & a,int delta){\n       a.x += delta;\n   }\n};\n\nint main(){\n   A a1;\n   B b;\n\n   b.changeX(a1,222);\n   a1.printX();//prints 227\n}\n",
+    "stdin": "",
+    "output": "227\n"
+  },
+  {
+    "id": "e24",
+    "title": "One friend member function",
+    "topic": "friends",
+    "note": "TWO must declare print before ONE can name it as a friend. Granting one method friendship is narrower than granting the entire class.",
+    "code": "#include <iostream>\nusing namespace std;\n\n// Must be known to TWO\n// before declaration of ONE.\nclass ONE;\n\nclass TWO\n{\npublic:\n   void print(const ONE &x);\n};\n\nclass ONE\n{\n   int a, b;\n   friend void TWO::print(const ONE &x);\n\npublic:\n   ONE() : a(1), b(2) {}\n};\n\nvoid TWO::print(const ONE &x)\n{\n   cout << \"a is \" << x.a << endl;\n   cout << \"b is \" << x.b << endl;\n}\n\nint main()\n{\n   ONE xobj;\n   TWO yobj;\n   yobj.print(xobj);\n}\n",
+    "stdin": "",
+    "output": "a is 1\nb is 2\n"
+  },
+  {
+    "id": "e25",
+    "title": "this: returning a copy or a reference",
+    "topic": "this",
+    "note": "Returning *this by value creates an independent result. Returning it by reference aliases the original object. A returned reference must not outlive the object.",
+    "code": "#include <iostream>\nusing namespace std;\nclass A {\n    int x=5;\npublic:\n    A byValue() const { return *this; }\n    A& byReference() { return *this; }\n    void boo() { x += 55; }\n    void print() const { cout << x << '\\n'; }\n};\nint main() {\n    A a;\n    a.byValue().boo(); // Modifies the temporary copy.\n    a.print();\n    a.byReference().boo(); // Modifies a.\n    a.print();\n}\n",
+    "stdin": "",
+    "output": "5\n60\n"
+  },
+  {
+    "id": "e26",
+    "title": "Student and UnderGrad: public inheritance",
+    "topic": "inheritance",
+    "note": "An UnderGrad is a Student. Private base data still exists in the base subobject but is not directly accessible to the derived class. Construction runs base first; destruction runs derived first.",
+    "code": "#include<iostream>\n#include<string>\nusing namespace std;\n\nclass Student{\n   private:\n       string ID;\n       string fname;\n   protected:\n       string lname;\n   public:\n       Student(string fn=\"NA\",string ln=\"NA\",string id=\"NA\")\n       {\n           cout << \"Base const.\\n\";\n           ID=id;\n           fname=fn;\n           lname=ln;\n       }\n       void print() const {\n           cout<< ID << \" \" << fname << \" \" << lname << endl;\n       }\n\n\n       virtual ~Student(){cout<<\"Base DEST\\n\";}\n};\n\n//Derived or child or sub class\n//type of inheritance here is public\n//if it was not specified then it's\n//considered private by default\nclass UnderGrad : public Student{\n   public:\n       UnderGrad(string tc, string fn, string ln, string id)\n       :Student(fn,ln,id)//calling parent's constructor\n                       //(otherwize, parent's default will be called,\n                       //if that happens and there isn't a default\n                       //constructor in the parent class, that would\n                       //be a compilation error\n       {\n           cout << \"Derived const.\\n\";\n           trainingCompany =  tc;\n       }\n       void print() const {\n           Student::print(); //calling print of base class\n           cout << trainingCompany << endl;\n       }\n\n       ~UnderGrad()\n       {cout<<\"Derived DEST\\n\";}\n   private:\n       string trainingCompany;\n};\n\nint main()\n{\n   //Student s1(\"Mohammad\", \"Ali\", \"567\");\n   //s1.print();\n\n   UnderGrad ugs1(\"ABC\", \"Leila\", \"Ali\", \"123\");\n   ugs1.print();\n\n}\n",
+    "stdin": "",
+    "output": "Base const.\nDerived const.\n123 Leila Ali\nABC\nDerived DEST\nBase DEST\n"
+  },
+  {
+    "id": "e27",
+    "title": "Animal: virtual functions and abstract classes",
+    "topic": "polymorphism",
+    "note": "A base pointer calls the override for the actual object. An abstract class cannot be instantiated. A virtual destructor permits safe deletion through a base pointer.",
+    "code": "#include <iostream>\n#include <string>\nusing namespace std;\n\n\n// Base class\nclass Animal {\n private:\n   string species;\n protected:\n   int numberOfLegs;\n public:\n   Animal(string s= \"Animal\",int n = 0){\n     cout<< \"Base constructor\\n\";\n     species = s;\n     numberOfLegs = n;\n   }\n\n   //pure virtual function\n   //have the form:\n   //virtual type functionName(paramList) = 0;\n   //with no implementation\n   //they make the class abstract\n   //we cannot instantiate objects of an Abstract class\n   //if pure virtual functions are not overridden\n   //in a derived class, then the derived class inherits\n   //the pure virtual function and becomes abstract itself\n   virtual ~Animal() = default;\n   virtual void makeSound() = 0;\n   //{cout << \"Animals make sounds!\\n\" ;}\n\n   //no need to override getSpecies in derived classes\n   //this base class method will function correctly\n   //for all objects of the derived classes\n   //(i.e., it will return the correct species)\n   string getSpecies() const {\n     return species;\n   }\n};\n\n// Derived class\nclass Cat : public Animal {\n private:\n   bool likesWetFood = true;\n public:\n   Cat():Animal(\"Felis catus\",4){cout<<\"Cat constructor\\n\";}\n\n   void makeSound() override {\n     cout << \"Meow!\\n\" ;\n   }\n\n   void purr(){\n     cout << \"Feeling good!\\n\";\n   }\n\n};\n\n// Derived class\nclass Dog : public Animal {\n public:\n   Dog():Animal(\"Canis lupus\",4) {cout<<\"Dog constructor\\n\";}\n\n   void makeSound() override {\n     cout << \"Woof!\\n\" ;\n   }\n\n   void bringNewsPaper(){\n     cout << \"Woof, here's your wet newspaper!\\n\";\n   }\n};\n\n\n//derived class\nclass Penguin : public Animal {\n public:\n Penguin() : Animal(\"Aptenodytes forsteri\",2) {}\n void swim(){cout << \"Look at that fish\\n\";}\n void makeSound() override {cout<<\"It's too cold here!\\n\";}\n};\n\n\nint main() {\n //Animal animal1; //we can't define objects of an Abstract class\n Cat cat1;\n Dog dog1;\n Penguin peng1;\n\n cout << endl;\n cat1.makeSound(); // Virtual call on a known concrete object.\n dog1.makeSound();//we are calling makeSound from class Dog\n peng1.makeSound();\n cout << endl;\n cat1.purr();\n dog1.bringNewsPaper();\n peng1.swim();\n cout << endl;\n\n cout << cat1.getSpecies() << endl;\n cout << dog1.getSpecies() << endl;\n cout << peng1.getSpecies() << endl;\n\n\n //(late binding (dynamic linkage) vs early binding(static linkage)\n cout << \"\\n\\n-----------------\\n\";\n Animal * ptr;\n ptr = &cat1;\n ptr->makeSound();\n //goes first to makeSound in Animal\n //because it is a virtual function\n //The final overrider is selected based on the\n //type of the object that ptr is pointing to (Cat in this case)\n cout << ptr->getSpecies()<< endl;\n\n Animal * ptrArr[3];//\n ptrArr[0] = &cat1;\n ptrArr[1] = &dog1;\n ptrArr[2] = new Cat();\n\n for (int i =0; i<3;i++)\n   ptrArr[i]->makeSound();\n\n delete ptrArr[2]; // Only this element owns a dynamically allocated object.\n}\n",
+    "stdin": "",
+    "output": "Base constructor\nCat constructor\nBase constructor\nDog constructor\nBase constructor\n\nMeow!\nWoof!\nIt's too cold here!\n\nFeeling good!\nWoof, here's your wet newspaper!\nLook at that fish\n\nFelis catus\nCanis lupus\nAptenodytes forsteri\n\n\n-----------------\nMeow!\nFelis catus\nBase constructor\nCat constructor\nMeow!\nWoof!\nMeow!\n"
+  },
+  {
+    "id": "e28",
+    "title": "Checked downcasting with dynamic_cast",
+    "topic": "casting",
+    "note": "Upcasting a pointer or reference preserves the original object. Copying a derived object into a base object can slice it. A failed pointer dynamic_cast returns nullptr; a failed reference cast throws std::bad_cast.",
+    "code": "#include <iostream>\n\nclass Shape {\n   public:\n       virtual ~Shape() = default;\n       virtual void draw() = 0;\n};\n\nclass Rectangle : public Shape {\n   public:\n       void draw() override {\n           std::cout << \"Drawing a rectangle\" << std::endl;\n       }\n};\n\nclass Circle : public Shape {\n   public:\n       void draw() override {\n           std::cout << \"Drawing a circle\" << std::endl;\n       }\n};\n\nint main() {\n\n   // Upcasting\n   Shape* shape_ptr = new Rectangle();\n\n   // Downcasting (this would work)\n   // because we are casting a base pointer\n   // that points to Rectangle object\n   // to a Rectangle pointer\n   Rectangle* rectangle_ptr = dynamic_cast<Rectangle*>(shape_ptr);\n   if (rectangle_ptr) {\n       rectangle_ptr->draw();\n   } else {\n       std::cout << \"Could not cast shape_ptr to a Rectangle\" << std::endl;\n   }\n\n   // Downcasting (this will not work)\n   // because we are casting a base pointer\n   // that points to Rectangle object\n   // to a Circle pointer \n   Circle * circle_ptr = dynamic_cast<Circle*>(shape_ptr);\n   if (circle_ptr) {\n       circle_ptr->draw();\n   } else {\n       std::cout << \"Could not cast shape_ptr to a Circle\" << std::endl;\n   }\n\n   delete shape_ptr;\n   return 0;\n}\n",
+    "stdin": "",
+    "output": "Drawing a rectangle\nCould not cast shape_ptr to a Circle\n"
+  },
+  {
+    "id": "e29",
+    "title": "Multiple and multilevel inheritance",
+    "topic": "multiple",
+    "note": "Multilevel: ResearchStudent \u2192 Student \u2192 Person. Multiple: ResearchStudent also derives from Presenter. Qualify a member name if multiple bases make it ambiguous.",
+    "code": "#include <iostream>\n#include <string>\nusing namespace std;\nclass Person {\n    string name;\npublic:\n    explicit Person(string n) : name(n) {}\n    void introduce() const { cout << \"Name: \" << name << '\\n'; }\n};\nclass Student : public Person {\npublic:\n    explicit Student(string n) : Person(n) {}\n    void study() const { cout << \"Studying C++\\n\"; }\n};\nclass Presenter {\npublic:\n    void present() const { cout << \"Presenting research\\n\"; }\n};\nclass ResearchStudent : public Student, public Presenter {\npublic:\n    explicit ResearchStudent(string n) : Student(n) {}\n};\nint main() {\n    ResearchStudent s(\"Leila\");\n    s.introduce(); s.study(); s.present();\n}\n",
+    "stdin": "",
+    "output": "Name: Leila\nStudying C++\nPresenting research\n"
+  },
+  {
+    "id": "e30",
+    "title": "Student: comparison, +=, and stream output",
+    "topic": "operators",
+    "note": "Return Student& from += to permit chaining. Stream operators return their stream. Grade equality here is exact and appropriate for these integer-valued demonstration grades.",
+    "code": "#include <iostream>\n#include <string>\nusing namespace std;\n\nclass Student{\n   friend ostream& operator<<(ostream &, const Student &);//allows the function operator<< to directly access class Student membrs\n\n   private:\n       const string name;\n       float g;\n\n   public:\n       Student(string name,float g=0):name(name){\n           this->g=g;\n       }\n  \n       void modifyGrade(float x){\n           g+=x;\n       }\n\n       bool operator>(const Student&s) const {\n           return g > s.g;\n       }\n\n       float getGrade() const {return g;}\n\n};\n\nStudent& operator+=(Student & s, float x){\n           s.modifyGrade(x);\n           return s;\n}\n\nostream& operator<<(ostream & out, const Student & s){\n   out << s.name << \" \" << s.g;\n   return out;\n}\n\n\nbool operator==(float n, const Student & s){\n   return n == s.getGrade();\n}\n\nint main(){\n   Student s1(\"Samer\",80);\n   Student s2(\"Dalal\",100);\n\n\n   s1+=5; //s1.operator+=(5) if as member\n   s1+=3; //as non-member: operaot+=(s1,3)\n\n   cout << s1 << endl; // operator<<(cout,s1)\n   s1+=-7;\n   cout << s1 << endl; // operator<<(cout,s1)\n\n   if(s1>s2) // Calls s1.operator>(s2).\n       cout << s1;\n   else if(s2>s1)\n       cout << s2 << endl;\n   else{\n       cout<<s1<<s2<<endl<<\"Done\";\n   }\n\n   if(100 == s2) //if(operator==(100,s1))\n       cout << \"Perfect!\\n\";\n\n   //cout << s1++; //s1.operator++(0)\n\n   //cout << ++s1;//s1.operator()\n\n}\n",
+    "stdin": "",
+    "output": "Samer 88\nSamer 81\nDalal 100\nPerfect!\n"
+  },
+  {
+    "id": "e31",
+    "title": "Point: unary and binary operators",
+    "topic": "operators",
+    "note": "Unary minus returns a new Point; binary subtraction uses both operands. Equality should return bool. Exact coordinate equality is demonstrated here; approximate comparisons may be needed for calculated floating-point values.",
+    "code": "#include <iostream>\nusing namespace std;\n\n// - unary vs binary\n// member vs non-member\n// non-member as friend vs non-friend\n\nclass Point {\n protected:\n   float x;\n   float y;\n  \n public:\n   Point(float x=0, float y=0);\n   void printPoint() const;\n\n   Point(const Point&) = default; // Keep copy semantics explicit in this demonstration.\n   Point & operator=(const Point &p){\n     x=p.x;\n     y=p.y;\n     return *this;\n   }\n\n   //- as unuary and as a member function\n   Point operator-() const {\n     Point tmp;\n     tmp.x  = -x;\n     tmp.y  = -y;\n\n     return tmp;\n   }\n\n   float getX()const {return x;}\n   float getY()const {return y;}\n\n   void setX(float x){this->x = x;}\n   void setY(float y){this->y = y;}\n\n/*\n//- as binary and as a member function\n   Point operator-(const Point &p) const {\n     Point tmpP;\n     tmpP.x = x - p.x;\n     tmpP.y = y - p.y;\n\n     return tmpP;\n   }\n*/\n   bool operator==(const Point &p) const {\n     if(x == p.x && y == p.y)\n       return true;\n     return false;\n   }\n\n   //friend Point operator-(const Point &, const Point &);\n\n};\n\nPoint::Point(float x, float y){\n this->x = x;\n this->y = y;\n}\n\nvoid Point::printPoint() const {\n cout<<\"(\" <<x<<\", \" << y<< \")\\n\";\n}\n\n\n\n//- as binary and as a non-member (non-friend) function\nPoint operator-(const Point &pt1, const Point &pt2) {\n     Point tmpP;\n     tmpP.setX(pt1.getX() - pt2.getX());\n     tmpP.setY(pt1.getY() - pt2.getY());\n\n     return tmpP;\n}\n\nint main() {\n\n Point p1(2,4);\n Point p2(2,4);\n\n\n\n Point p3 = -p1; //unary - : interpreted as p1.operator-()\n p1.printPoint(); //p1 still the same\n p3.printPoint();\n\n p1.printPoint();\n p2.printPoint();\n Point p4 = p1-p2; // the compiler will interpret this as p1.operator-(p2) if operator- is implemented as a member function\n //and\n //as operator-(p1,p2) if operator- is implemented as a non-member function\n cout << \"p1 - p2:\\n\";\n p4.printPoint();\n\n if(p1==p2)\n   cout << \"p1 equals p2\\n\";\n else\n  cout << \"p1 doesn't equal p2\\n\";\n\n //you can  call the overloaded operator functions explicitly. For example:\n if(p1.operator==(p2))\n   cout << \"p1 equals p2\\n\";\n else\n  cout << \"p1 doesn't equal p2\\n\"; \n\n p4=p3=p2=p1;\n  p1.printPoint();\n  p2.printPoint();\n  p3.printPoint();\n  p4.printPoint();\n\n}\n",
+    "stdin": "",
+    "output": "(2, 4)\n(-2, -4)\n(2, 4)\n(2, 4)\np1 - p2:\n(0, 0)\np1 equals p2\np1 equals p2\n(2, 4)\n(2, 4)\n(2, 4)\n(2, 4)\n"
+  },
+  {
+    "id": "e32",
+    "title": "Student: prefix, postfix, and stream input",
+    "topic": "increment",
+    "note": "Prefix ++ returns the updated object by reference. Postfix ++ has a dummy int parameter and returns the previous value. Failed input leaves the grade unchanged.",
+    "code": "#include <iostream>\n#include <string>\nusing namespace std;\nclass Student {\n    string name;\n    double grade;\npublic:\n    Student(string n, double g=0) : name(n), grade(g) {}\n    Student& operator++() { ++grade; return *this; } // Prefix.\n    Student operator++(int) { // Postfix: unnamed dummy int distinguishes it.\n        Student old(*this);\n        ++(*this);\n        return old;\n    }\n    friend ostream& operator<<(ostream& out, const Student& s) {\n        return out << s.name << ' ' << s.grade;\n    }\n    friend istream& operator>>(istream& in, Student& s) {\n        double value;\n        if (in >> value) s.grade=value;\n        return in;\n    }\n};\nint main() {\n    Student s(\"Hazem\",65);\n    cout << \"Postfix result: \" << s++ << '\\n';\n    cout << \"After postfix: \" << s << '\\n';\n    cout << \"Prefix result: \" << ++s << '\\n';\n    if (!(cin >> s)) { cerr << \"Expected a numeric grade\\n\"; return 1; }\n    cout << \"After input: \" << s << '\\n';\n}\n",
+    "stdin": "80\n",
+    "output": "Postfix result: Hazem 65\nAfter postfix: Hazem 66\nPrefix result: Hazem 67\nAfter input: Hazem 80\n"
+  },
+  {
+    "id": "console-io",
+    "title": "Read a name and a numeric grade",
+    "topic": "console-io",
+    "note": "getline reads a complete line, including spaces. Formatted extraction with >> converts numeric input. Check the stream before using a value.",
+    "code": "#include <iostream>\n#include <iomanip>\n#include <string>\nusing namespace std;\nint main() {\n    string name;\n    double grade = 0;\n    cout << \"Enter your full name:\\n\";\n    if (!getline(cin, name)) {\n        cerr << \"Could not read the name.\\n\";\n        return 1;\n    }\n    cout << \"Enter a grade from 0 to 100:\\n\";\n    if (!(cin >> grade) || !(grade >= 0 && grade <= 100)) {\n        cerr << \"Invalid grade.\\n\";\n        return 1;\n    }\n    cout << fixed << setprecision(1);\n    cout << name << \": \" << grade << '\\n';\n    return 0;\n}\n",
+    "stdin": "Manaf Gharaibeh\n85.5\n",
+    "output": "Enter your full name:\nEnter a grade from 0 to 100:\nManaf Gharaibeh: 85.5\n"
+  },
+  {
+    "id": "mixed-input",
+    "title": "Mix >> and getline without losing a line",
+    "topic": "console-io",
+    "note": "After extracting the ID, ignore discards the rest of that input line, including its newline. Without it, getline would read the leftover newline as an empty line.",
+    "code": "#include <iostream>\n#include <limits>\n#include <string>\nusing namespace std;\nint main() {\n    int id = 0;\n    string fullName;\n    cout << \"Enter ID on the first line, then full name on the next:\\n\";\n    if (!(cin >> id)) {\n        cerr << \"Expected a numeric ID.\\n\";\n        return 1;\n    }\n    cin.ignore(numeric_limits<streamsize>::max(), '\\n');\n    if (!getline(cin, fullName)) {\n        cerr << \"Expected a name on the next line.\\n\";\n        return 1;\n    }\n    cout << id << \" | \" << fullName << '\\n';\n    return 0;\n}\n",
+    "stdin": "123\nLeila Ali\n",
+    "output": "Enter ID on the first line, then full name on the next:\n123 | Leila Ali\n"
+  },
+  {
+    "id": "text-files",
+    "title": "Write records, close the file, then read them",
+    "topic": "text-files",
+    "note": "ofstream writes and ifstream reads. The example creates its own input file during the same run, so it does not need an uploaded file. It reads only complete records and checks for malformed input.",
+    "code": "#include <fstream>\n#include <iomanip>\n#include <iostream>\n#include <string>\nusing namespace std;\nint main() {\n    // Default output mode replaces the file's previous contents.\n    ofstream out(\"grades.txt\");\n    if (!out) {\n        cerr << \"Cannot create grades.txt in the working directory.\\n\";\n        return 1;\n    }\n    // One whitespace-separated name and one grade per record.\n    out << \"Amal 85\\nLina 92\\n\";\n    out.close(); // Flush and close before opening a reader.\n    if (!out) { cerr << \"Writing the file failed.\\n\"; return 1; }\n\n    ifstream in(\"grades.txt\");\n    if (!in) { cerr << \"Cannot open grades.txt.\\n\"; return 1; }\n    string name;\n    double grade = 0, total = 0;\n    int count = 0;\n    // Read the name first so an incomplete trailing record is detectable.\n    while (in >> name) {\n        if (!(in >> grade)) {\n            cerr << \"Incomplete or invalid grade record.\\n\";\n            return 1;\n        }\n        cout << name << \": \" << grade << '\\n';\n        total += grade;\n        ++count;\n    }\n    if (!in.eof()) { cerr << \"Reading failed.\\n\"; return 1; }\n    if (count > 0)\n        cout << fixed << setprecision(1) << \"Average: \" << total/count << '\\n';\n    else\n        cout << \"No records.\\n\";\n    return 0;\n}\n",
+    "stdin": "",
+    "output": "Amal: 85\nLina: 92\nAverage: 88.5\n"
+  },
+  {
+    "id": "memory-pointers",
+    "title": "Run the pointer/reference walkthrough",
+    "topic": "pointers",
+    "note": "This runnable trace matches the diagram\u2019s statements. A pointer can change its target; assigning to a reference changes its original object.",
+    "code": "#include <iostream>\nusing namespace std;\nint main() {\n    int x=5, y=10;\n    int* ptr=&x;\n    int* p2=ptr;\n    int& num=x; // An alias for x, not a separately reseatable pointer.\n    *ptr=100;\n    cout << \"After *ptr=100: x=\" << x << \", y=\" << y << '\\n';\n    ptr=&y; // Reseat ptr; p2 still points to x.\n    num=y;  // Copy y's value into x. num remains an alias for x.\n    cout << \"After num=y: x=\" << x << \", y=\" << y << '\\n';\n    *p2=42;\n    ptr=nullptr;\n    cout << \"Final: x=\" << x << \", y=\" << y << '\\n';\n    cout << boolalpha << \"ptr is null: \" << (ptr==nullptr) << '\\n';\n    cout << \"p2 still points to x: \" << (p2==&x) << '\\n';\n    cout << \"num still aliases x: \" << (&num==&x) << '\\n';\n    return 0;\n}\n",
+    "stdin": "",
+    "output": "After *ptr=100: x=100, y=10\nAfter num=y: x=10, y=10\nFinal: x=42, y=10\nptr is null: true\np2 still points to x: true\nnum still aliases x: true\n"
+  },
+  {
+    "id": "memory-dynamic",
+    "title": "Run the allocation/deallocation walkthrough",
+    "topic": "dynamic",
+    "note": "This trace matches the diagram and never dereferences a dangling pointer. Setting one pointer to nullptr does not reset copies of its address.",
+    "code": "#include <iostream>\nusing namespace std;\nint main() {\n    int* p=nullptr;\n    int* alias=nullptr;\n    p=new int(7);\n    alias=p;\n    *alias=12;\n    cout << \"Allocation A: \" << *p << '\\n';\n    delete p; // Releases the int, not the pointer variables.\n    // Both p and alias are now dangling: do not dereference either one.\n    p=nullptr; // Does not change alias.\n    alias=nullptr;\n    int* values=new int[3]{1,2,3};\n    values[1]=9;\n    cout << \"Array: \";\n    for (int i=0;i<3;++i) cout << values[i] << (i==2?'\\n':' ');\n    delete[] values; // Match new[] with delete[].\n    values=nullptr;\n    cout << \"All allocations released; pointers reset.\\n\";\n    return 0;\n}\n",
+    "stdin": "",
+    "output": "Allocation A: 12\nArray: 1 9 3\nAll allocations released; pointers reset.\n"
+  },
+  {
+    "id": "linked-starter",
+    "title": "Optional chain exercise starter",
+    "topic": "linked",
+    "note": "The starter compiles but its traversal functions and links are incomplete. All nodes are local objects; do not use delete on them.",
+    "code": "#include <iostream>\nusing namespace std;\nclass Node {\npublic:\n    int value;\n    Node* next;\n    Node(int v, Node* n=nullptr) : value(v), next(n) {}\n};\nint countNodes(const Node* head) {\n    // TODO: follow next links and count nodes until nullptr.\n    (void)head;\n    return 0;\n}\nvoid printChain(const Node* head) {\n    // TODO: print each value followed by a space, then a newline.\n    (void)head;\n    cout << '\\n';\n}\nint main() {\n    Node a(10), b(20), c(30), extra(15);\n    // TODO: connect a -> b -> c -> nullptr.\n    printChain(&a);\n    cout << \"Count: \" << countNodes(&a) << '\\n';\n    cout << \"Empty count: \" << countNodes(nullptr) << '\\n';\n    // TODO: insert extra after a without losing the rest of the chain.\n    printChain(&a);\n    cout << \"After insertion: \" << countNodes(&a) << '\\n';\n    return 0;\n}\n",
+    "stdin": "",
+    "output": "\nCount: 0\nEmpty count: 0\n\nAfter insertion: 0\n"
+  }
+]

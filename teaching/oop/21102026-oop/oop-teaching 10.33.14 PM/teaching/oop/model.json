@@ -1,0 +1,192 @@
+{
+  "starter": "#include <iostream>\n#include <string>\nusing namespace std;\nclass Student {\nprivate:\n    string name;\n    int grade;\npublic:\n    Student(string studentName, int initialGrade=0) : name(studentName), grade(0) {\n        setGrade(initialGrade);\n    }\n    string getName() const { return name; }\n    int getGrade() const { return grade; }\n    bool setGrade(int value) {\n        // TODO: accept values from 0 to 100 inclusive.\n        // TODO: preserve the old grade if value is invalid.\n        (void)value;\n        return false;\n    }\n};\nint main() {\n    Student a(\"Amal\",85), b(\"Lina\");\n    cout << a.getName() << \": \" << a.getGrade() << '\\n';\n    cout << b.getName() << \": \" << b.getGrade() << '\\n';\n    bool accepted=a.setGrade(120);\n    cout << boolalpha << \"Accepted 120: \" << accepted << '\\n';\n    cout << \"Amal's grade is still \" << a.getGrade() << '\\n';\n    return 0;\n}\n",
+  "solution": "#include <iostream>\n#include <string>\nusing namespace std;\nclass Student {\nprivate:\n    string name;\n    int grade;\npublic:\n    Student(string studentName, int initialGrade=0) : name(studentName), grade(0) {\n        setGrade(initialGrade);\n    }\n    string getName() const { return name; }\n    int getGrade() const { return grade; }\n    bool setGrade(int value) {\n        if (value < 0 || value > 100) return false;\n        grade=value;\n        return true;\n    }\n};\nint main() {\n    Student a(\"Amal\",85), b(\"Lina\");\n    cout << a.getName() << \": \" << a.getGrade() << '\\n';\n    cout << b.getName() << \": \" << b.getGrade() << '\\n';\n    bool accepted=a.setGrade(120);\n    cout << boolalpha << \"Accepted 120: \" << accepted << '\\n';\n    cout << \"Amal's grade is still \" << a.getGrade() << '\\n';\n    return 0;\n}\n",
+  "tests": "\n#undef main\nint main() {\n    int passed=0;\n    auto check=[&](bool ok, const char* label) {\n        cout << (ok ? \"PASS: \" : \"FAIL: \") << label << '\\n';\n        if (ok) ++passed;\n    };\n    Student a(\"Amal\");\n    check(a.getName()==\"Amal\" && a.getGrade()==0,\"Default grade and name\");\n    Student b(\"Lina\",85);\n    check(b.getGrade()==85,\"Constructor accepts a valid grade\");\n    bool low=b.setGrade(0); bool lowOk=low && b.getGrade()==0;\n    bool high=b.setGrade(100);\n    check(lowOk && high && b.getGrade()==100,\"Both boundaries: 0 and 100\");\n    bool rejectedLow=!b.setGrade(-1);\n    bool rejectedHigh=!b.setGrade(101);\n    check(rejectedLow && rejectedHigh && b.getGrade()==100,\"Invalid updates preserve the previous grade\");\n    Student c(\"Omar\",150);\n    check(c.getGrade()==0,\"Invalid initial grade keeps safe fallback\");\n    a.setGrade(70); b.setGrade(90);\n    check(a.getGrade()==70 && b.getGrade()==90,\"Objects have independent state\");\n    cout << \"Checks passed: \" << passed << \"/6\\n\";\n    if (passed==6) cout << \"OOP_CHECKPOINT_PASS\\n\";\n    return passed==6 ? 0 : 1;\n}\n",
+  "quiz": [
+    {
+      "id": "class-object",
+      "prompt": "Which statement best describes a class and its objects?",
+      "options": [
+        "A class defines a type; each object is an instance with its own non-static data.",
+        "Every object contains every other object of the same class.",
+        "A class is simply a variable holding one value."
+      ],
+      "correct": 0,
+      "explanation": "The class defines the structure and operations. p1 and p2 are separate objects; each stores its own x and y."
+    },
+    {
+      "id": "private",
+      "prompt": "Which statement is valid outside Point when x is private and setX is public?",
+      "options": [
+        "p1.x = 8;",
+        "p1.setX(8);",
+        "Point.x = 8;"
+      ],
+      "correct": 1,
+      "explanation": "Use the public interface. private blocks direct access from unrelated code; it does not prevent member functions from using x."
+    },
+    {
+      "id": "constructor",
+      "prompt": "What does Point p; produce in the basic example?",
+      "options": [
+        "Uninitialized coordinates, because p has no arguments.",
+        "A function named p.",
+        "A Point with coordinates (0,0), using the constructor\u2019s default arguments."
+      ],
+      "correct": 2,
+      "explanation": "The constructor can be called with no arguments and explicitly initializes both members. Point p(); would instead declare a function."
+    },
+    {
+      "id": "independence",
+      "prompt": "Point a(2,3), b; b.setX(8); What is a.getX()?",
+      "options": [
+        "8",
+        "0",
+        "2"
+      ],
+      "correct": 2,
+      "explanation": "The call updates b. a still has its own x value, 2."
+    },
+    {
+      "id": "const-query",
+      "prompt": "Why is getX() declared const?",
+      "options": [
+        "It promises not to modify ordinary instance state through this call.",
+        "It makes every Point permanently immutable.",
+        "It makes the returned int a reference."
+      ],
+      "correct": 0,
+      "explanation": "A const query can be called on const objects. It does not make other objects or all member functions immutable."
+    }
+  ],
+  "steps": [
+    {
+      "code": "// No Point objects have been declared yet.",
+      "objects": [],
+      "note": "The class declaration defines a type. It does not create p1 or p2."
+    },
+    {
+      "code": "Point p1(2,3);",
+      "objects": [
+        {
+          "name": "p1",
+          "x": 2,
+          "y": 3
+        }
+      ],
+      "note": "The constructor initializes p1\u2019s two coordinates."
+    },
+    {
+      "code": "Point p2;",
+      "objects": [
+        {
+          "name": "p1",
+          "x": 2,
+          "y": 3
+        },
+        {
+          "name": "p2",
+          "x": 0,
+          "y": 0
+        }
+      ],
+      "note": "The same constructor uses default arguments for p2. p1 is unchanged."
+    },
+    {
+      "code": "p2.setX(8);",
+      "objects": [
+        {
+          "name": "p1",
+          "x": 2,
+          "y": 3
+        },
+        {
+          "name": "p2",
+          "x": 8,
+          "y": 0
+        }
+      ],
+      "note": "Only p2.x changes. The object before the dot selects which state the method uses."
+    },
+    {
+      "code": "p1.setY(7);",
+      "objects": [
+        {
+          "name": "p1",
+          "x": 2,
+          "y": 7
+        },
+        {
+          "name": "p2",
+          "x": 8,
+          "y": 0
+        }
+      ],
+      "note": "Only p1.y changes. Both objects share the member-function definitions, not coordinate values."
+    },
+    {
+      "code": "Point p3 = p1;",
+      "objects": [
+        {
+          "name": "p1",
+          "x": 2,
+          "y": 7
+        },
+        {
+          "name": "p2",
+          "x": 8,
+          "y": 0
+        },
+        {
+          "name": "p3",
+          "x": 2,
+          "y": 7
+        }
+      ],
+      "note": "The compiler-provided copy constructor copies this simple class\u2019s int members into a new object."
+    },
+    {
+      "code": "p3.setX(-1);",
+      "objects": [
+        {
+          "name": "p1",
+          "x": 2,
+          "y": 7
+        },
+        {
+          "name": "p2",
+          "x": 8,
+          "y": 0
+        },
+        {
+          "name": "p3",
+          "x": -1,
+          "y": 7
+        }
+      ],
+      "note": "Changing the copy does not change p1. This independence is for these value members; owning pointer members need special care later."
+    },
+    {
+      "code": "p2 = p1;",
+      "objects": [
+        {
+          "name": "p1",
+          "x": 2,
+          "y": 7
+        },
+        {
+          "name": "p2",
+          "x": 2,
+          "y": 7
+        },
+        {
+          "name": "p3",
+          "x": -1,
+          "y": 7
+        }
+      ],
+      "note": "Assignment updates an existing object. It differs from creating a new object by copy construction."
+    }
+  ],
+  "solutionOutput": "Amal: 85\nLina: 0\nAccepted 120: false\nAmal's grade is still 85\n"
+}

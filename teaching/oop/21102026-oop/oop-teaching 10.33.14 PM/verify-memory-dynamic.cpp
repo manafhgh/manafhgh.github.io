@@ -1,0 +1,40 @@
+#include <cassert>
+int main() {
+int* p=nullptr; int* alias=nullptr;
+assert(p==nullptr);
+assert(alias==nullptr);
+p = new int(7);
+assert(alias==nullptr);
+assert(*p==7);
+alias = p;
+assert(*p==7);
+assert(alias==p);
+*alias = 12;
+assert(*p==12);
+assert(alias==p);
+delete p;
+p = nullptr;
+assert(p==nullptr);
+alias = nullptr;
+assert(p==nullptr);
+assert(alias==nullptr);
+int* values = new int[3]{1,2,3};
+assert(p==nullptr);
+assert(alias==nullptr);
+assert(values[0]==1);
+assert(values[1]==2);
+assert(values[2]==3);
+values[1] = 9;
+assert(p==nullptr);
+assert(alias==nullptr);
+assert(values[0]==1);
+assert(values[1]==9);
+assert(values[2]==3);
+delete[] values;
+assert(p==nullptr);
+assert(alias==nullptr);
+values = nullptr;
+assert(p==nullptr);
+assert(alias==nullptr);
+assert(values==nullptr);
+return 0; }

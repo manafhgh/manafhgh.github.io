@@ -1,0 +1,42 @@
+#include <cassert>
+int main() {
+int x=5, y=10;
+assert(x==5 && y==10);
+int* ptr = &x;
+assert(x==5 && y==10);
+assert(ptr==&x);
+int* p2 = ptr;
+assert(x==5 && y==10);
+assert(ptr==&x);
+assert(p2==&x);
+int& num = x;
+assert(x==5 && y==10);
+assert(ptr==&x);
+assert(p2==&x);
+assert(&num==&x);
+*ptr = 100;
+assert(x==100 && y==10);
+assert(ptr==&x);
+assert(p2==&x);
+assert(&num==&x);
+ptr = &y;
+assert(x==100 && y==10);
+assert(ptr==&y);
+assert(p2==&x);
+assert(&num==&x);
+num = y;
+assert(x==10 && y==10);
+assert(ptr==&y);
+assert(p2==&x);
+assert(&num==&x);
+*p2 = 42;
+assert(x==42 && y==10);
+assert(ptr==&y);
+assert(p2==&x);
+assert(&num==&x);
+ptr = nullptr;
+assert(x==42 && y==10);
+assert(ptr==nullptr);
+assert(p2==&x);
+assert(&num==&x);
+return 0; }

@@ -1,0 +1,485 @@
+[
+  {
+    "id": "e01",
+    "passed": true,
+    "exit_code": 0,
+    "output": "Inside swapValue: 10 5\nAfter swapValue: 5 10\nAfter swapReference: 10 5\n",
+    "diagnostics": ""
+  },
+  {
+    "id": "e02",
+    "passed": true,
+    "exit_code": 0,
+    "output": "10\n10\n",
+    "diagnostics": ""
+  },
+  {
+    "id": "e03",
+    "passed": true,
+    "exit_code": 0,
+    "output": "10 5\n",
+    "diagnostics": ""
+  },
+  {
+    "id": "e04",
+    "passed": true,
+    "exit_code": 0,
+    "output": "float version\n5\nint version\n7\n",
+    "diagnostics": ""
+  },
+  {
+    "id": "e05",
+    "passed": true,
+    "exit_code": 0,
+    "output": "25\n15\n",
+    "diagnostics": ""
+  },
+  {
+    "id": "e06",
+    "passed": true,
+    "exit_code": 0,
+    "output": "1 2 3 4 5 \n55\n",
+    "diagnostics": ""
+  },
+  {
+    "id": "e07",
+    "passed": true,
+    "exit_code": 0,
+    "output": "Null pointer: true\n*ptr: 5\nx: 100\nSame address: true\nx: 10 y: 10\nAlias has same address: true\n",
+    "diagnostics": ""
+  },
+  {
+    "id": "e08",
+    "passed": true,
+    "exit_code": 0,
+    "output": "400\n66 500\n",
+    "diagnostics": ""
+  },
+  {
+    "id": "e09",
+    "passed": true,
+    "exit_code": 0,
+    "output": "5\n100\n5\n\n1 1\n1 2\n1 3\n",
+    "diagnostics": ""
+  },
+  {
+    "id": "e10",
+    "passed": true,
+    "exit_code": 0,
+    "output": "1 2 5 0 0 \na2 size: 3\nRecursive sum: 8\nIterative sum: 8\n",
+    "diagnostics": ""
+  },
+  {
+    "id": "point-basics",
+    "passed": true,
+    "exit_code": 0,
+    "output": "(2,3)\n(0,0)\n(3,2)\n(8,0)\n",
+    "diagnostics": ""
+  },
+  {
+    "id": "student-validation",
+    "passed": true,
+    "exit_code": 0,
+    "output": "Amal: 85\nLina: 0\nAccepted 120: false\nAmal's grade is still 85\n",
+    "diagnostics": ""
+  },
+  {
+    "id": "e11",
+    "passed": true,
+    "exit_code": 0,
+    "output": "(-3,0)\n(0,0)\n(4,0)\nQuadrant: -1\nNon-member distance: 7\nMember distance: 7\n",
+    "diagnostics": ""
+  },
+  {
+    "id": "e12",
+    "passed": true,
+    "exit_code": 0,
+    "output": "Construct (1,2)\nCopy (1,2)\nIn byValue (1,2)\nDestroy (1,2)\nIn byReference (1,2)\nCopy (1,2)\nDestroy (1,2)\nDestroy (1,2)\n",
+    "diagnostics": ""
+  },
+  {
+    "id": "e13",
+    "passed": true,
+    "exit_code": 0,
+    "output": "5\n",
+    "diagnostics": ""
+  },
+  {
+    "id": "e14",
+    "passed": true,
+    "exit_code": 0,
+    "output": "COPY CONSTRUCTOR\nSamah NA 0\nSalem Adnan 70\nMaha Salem 80\n",
+    "diagnostics": ""
+  },
+  {
+    "id": "e15",
+    "passed": true,
+    "exit_code": 0,
+    "output": "(1,1)\n",
+    "diagnostics": ""
+  },
+  {
+    "id": "e16",
+    "passed": true,
+    "exit_code": 0,
+    "output": "0 C\n32 F\n37.7778 C\n100 F\n\nArray temperatures:\n[0]\n-6.66667 C\n20 F\n-------\n[1]\n30 C\n86 F\n-------\n[2]\n0 C\n32 F\n-------\n-------\nArray temperatures average: 7.77778 C\n10 C\n50 F\n47.7778 C\n118 F\n",
+    "diagnostics": ""
+  },
+  {
+    "id": "e17",
+    "passed": true,
+    "exit_code": 0,
+    "output": "Count: 0\n1 1 1 red\ncount of Box objects: 3\nCount: 3\n",
+    "diagnostics": ""
+  },
+  {
+    "id": "e18",
+    "passed": true,
+    "exit_code": 0,
+    "output": "Length: 5\n",
+    "diagnostics": ""
+  },
+  {
+    "id": "e19",
+    "passed": true,
+    "exit_code": 0,
+    "output": "300 100 500 700 \n",
+    "diagnostics": ""
+  },
+  {
+    "id": "e20",
+    "passed": true,
+    "exit_code": 0,
+    "output": "10 22.44 0 11.11 0 \n300\n333\n(0,0)\n(4,15)\n(2,3)\n(20,40)\n(30,40)\n(0,0)\n(4,15)\n",
+    "diagnostics": ""
+  },
+  {
+    "id": "e21",
+    "passed": true,
+    "exit_code": 0,
+    "output": "70 80 90 average: 80\n75 80 90 average: 81.6667\n70 80 90 average: 80\n",
+    "diagnostics": ""
+  },
+  {
+    "id": "e22",
+    "passed": true,
+    "exit_code": 0,
+    "output": "Sum: 666\n",
+    "diagnostics": ""
+  },
+  {
+    "id": "e23",
+    "passed": true,
+    "exit_code": 0,
+    "output": "227\n",
+    "diagnostics": ""
+  },
+  {
+    "id": "e24",
+    "passed": true,
+    "exit_code": 0,
+    "output": "a is 1\nb is 2\n",
+    "diagnostics": ""
+  },
+  {
+    "id": "e25",
+    "passed": true,
+    "exit_code": 0,
+    "output": "5\n60\n",
+    "diagnostics": ""
+  },
+  {
+    "id": "e26",
+    "passed": true,
+    "exit_code": 0,
+    "output": "Base const.\nDerived const.\n123 Leila Ali\nABC\nDerived DEST\nBase DEST\n",
+    "diagnostics": ""
+  },
+  {
+    "id": "e27",
+    "passed": true,
+    "exit_code": 0,
+    "output": "Base constructor\nCat constructor\nBase constructor\nDog constructor\nBase constructor\n\nMeow!\nWoof!\nIt's too cold here!\n\nFeeling good!\nWoof, here's your wet newspaper!\nLook at that fish\n\nFelis catus\nCanis lupus\nAptenodytes forsteri\n\n\n-----------------\nMeow!\nFelis catus\nBase constructor\nCat constructor\nMeow!\nWoof!\nMeow!\n",
+    "diagnostics": ""
+  },
+  {
+    "id": "e28",
+    "passed": true,
+    "exit_code": 0,
+    "output": "Drawing a rectangle\nCould not cast shape_ptr to a Circle\n",
+    "diagnostics": ""
+  },
+  {
+    "id": "e29",
+    "passed": true,
+    "exit_code": 0,
+    "output": "Name: Leila\nStudying C++\nPresenting research\n",
+    "diagnostics": ""
+  },
+  {
+    "id": "e30",
+    "passed": true,
+    "exit_code": 0,
+    "output": "Samer 88\nSamer 81\nDalal 100\nPerfect!\n",
+    "diagnostics": ""
+  },
+  {
+    "id": "e31",
+    "passed": true,
+    "exit_code": 0,
+    "output": "(2, 4)\n(-2, -4)\n(2, 4)\n(2, 4)\np1 - p2:\n(0, 0)\np1 equals p2\np1 equals p2\n(2, 4)\n(2, 4)\n(2, 4)\n(2, 4)\n",
+    "diagnostics": ""
+  },
+  {
+    "id": "e32",
+    "passed": true,
+    "exit_code": 0,
+    "output": "Postfix result: Hazem 65\nAfter postfix: Hazem 66\nPrefix result: Hazem 67\nAfter input: Hazem 80\n",
+    "diagnostics": ""
+  },
+  {
+    "id": "console-io",
+    "passed": true,
+    "exit_code": 0,
+    "output": "Enter your full name:\nEnter a grade from 0 to 100:\nManaf Gharaibeh: 85.5\n",
+    "diagnostics": ""
+  },
+  {
+    "id": "mixed-input",
+    "passed": true,
+    "exit_code": 0,
+    "output": "Enter ID on the first line, then full name on the next:\n123 | Leila Ali\n",
+    "diagnostics": ""
+  },
+  {
+    "id": "text-files",
+    "passed": true,
+    "exit_code": 0,
+    "output": "Amal: 85\nLina: 92\nAverage: 88.5\n",
+    "diagnostics": ""
+  },
+  {
+    "id": "memory-pointers",
+    "passed": true,
+    "exit_code": 0,
+    "output": "After *ptr=100: x=100, y=10\nAfter num=y: x=10, y=10\nFinal: x=42, y=10\nptr is null: true\np2 still points to x: true\nnum still aliases x: true\n",
+    "diagnostics": ""
+  },
+  {
+    "id": "memory-dynamic",
+    "passed": true,
+    "exit_code": 0,
+    "output": "Allocation A: 12\nArray: 1 9 3\nAll allocations released; pointers reset.\n",
+    "diagnostics": ""
+  },
+  {
+    "id": "linked-starter",
+    "passed": true,
+    "exit_code": 0,
+    "output": "\nCount: 0\nEmpty count: 0\n\nAfter insertion: 0\n",
+    "diagnostics": ""
+  },
+  {
+    "id": "practice-functions",
+    "passed": true,
+    "exit_code": 0,
+    "output": "7\n",
+    "diagnostics": ""
+  },
+  {
+    "id": "practice-recursion",
+    "passed": true,
+    "exit_code": 0,
+    "output": "1 1 120\n",
+    "diagnostics": ""
+  },
+  {
+    "id": "practice-pointers",
+    "passed": true,
+    "exit_code": 0,
+    "output": "20\n10 20\n",
+    "diagnostics": ""
+  },
+  {
+    "id": "practice-constants",
+    "passed": true,
+    "exit_code": 0,
+    "output": "42 10\n",
+    "diagnostics": ""
+  },
+  {
+    "id": "practice-scope",
+    "passed": true,
+    "exit_code": 0,
+    "output": "1 2 3\n",
+    "diagnostics": ""
+  },
+  {
+    "id": "practice-arrays",
+    "passed": true,
+    "exit_code": 0,
+    "output": "3\n",
+    "diagnostics": ""
+  },
+  {
+    "id": "practice-console-io",
+    "passed": true,
+    "exit_code": 0,
+    "output": "Average: 85.5\n",
+    "diagnostics": ""
+  },
+  {
+    "id": "practice-text-files",
+    "passed": true,
+    "exit_code": 0,
+    "output": "Amal: 85\nLina: 92\nOmar: 78\nAverage: 85.0\n",
+    "diagnostics": ""
+  },
+  {
+    "id": "practice-classes",
+    "passed": true,
+    "exit_code": 0,
+    "output": "5 0\n",
+    "diagnostics": ""
+  },
+  {
+    "id": "practice-lifetime",
+    "passed": true,
+    "exit_code": 0,
+    "output": "Construct (1,1)\nConstruct (2,2)\nDestroy (2,2)\nBack in outer scope\nDestroy (1,1)\n",
+    "diagnostics": ""
+  },
+  {
+    "id": "practice-interface",
+    "passed": true,
+    "exit_code": 0,
+    "output": "3\n",
+    "diagnostics": ""
+  },
+  {
+    "id": "practice-object-arrays",
+    "passed": true,
+    "exit_code": 0,
+    "output": "(-1,0)\n",
+    "diagnostics": ""
+  },
+  {
+    "id": "practice-temperature",
+    "passed": true,
+    "exit_code": 0,
+    "output": "[0]\n10 C\n50 F\n-------\n[1]\n10 C\n50 F\n-------\n-------\n10 C\n",
+    "diagnostics": ""
+  },
+  {
+    "id": "practice-static",
+    "passed": true,
+    "exit_code": 0,
+    "output": "0\n2\n0\n",
+    "diagnostics": ""
+  },
+  {
+    "id": "practice-composition",
+    "passed": true,
+    "exit_code": 0,
+    "output": "5\n",
+    "diagnostics": ""
+  },
+  {
+    "id": "practice-dynamic",
+    "passed": true,
+    "exit_code": 0,
+    "output": "(1,1)\n(2,2)\n(3,3)\n",
+    "diagnostics": ""
+  },
+  {
+    "id": "practice-ownership",
+    "passed": true,
+    "exit_code": 0,
+    "output": "70 80 90 average: 80\n75 80 90 average: 81.6667\n",
+    "diagnostics": ""
+  },
+  {
+    "id": "practice-friends",
+    "passed": true,
+    "exit_code": 0,
+    "output": "Product: 83000\n",
+    "diagnostics": ""
+  },
+  {
+    "id": "practice-this",
+    "passed": true,
+    "exit_code": 0,
+    "output": "35\n",
+    "diagnostics": ""
+  },
+  {
+    "id": "practice-inheritance",
+    "passed": true,
+    "exit_code": 0,
+    "output": "Base const.\nDerived const.\n123 Leila Ali\nABC\n2027\nDerived DEST\nBase DEST\n",
+    "diagnostics": ""
+  },
+  {
+    "id": "practice-polymorphism",
+    "passed": true,
+    "exit_code": 0,
+    "output": "Base constructor\nMoo!\n",
+    "diagnostics": ""
+  },
+  {
+    "id": "practice-casting",
+    "passed": true,
+    "exit_code": 0,
+    "output": "Could not cast shape_ptr to a Rectangle\nDrawing a circle\n",
+    "diagnostics": ""
+  },
+  {
+    "id": "practice-multiple",
+    "passed": true,
+    "exit_code": 0,
+    "output": "Name: Leila\nStudying C++\nPresenting research\nTeaching a tutorial\n",
+    "diagnostics": ""
+  },
+  {
+    "id": "practice-operators",
+    "passed": true,
+    "exit_code": 0,
+    "output": "true\n",
+    "diagnostics": ""
+  },
+  {
+    "id": "practice-increment",
+    "passed": true,
+    "exit_code": 0,
+    "output": "Hazem 65\nHazem 64\nHazem 63\n",
+    "diagnostics": ""
+  },
+  {
+    "id": "practice-linked",
+    "passed": true,
+    "exit_code": 0,
+    "output": "10 20 30 \nCount: 3\nEmpty count: 0\n10 15 20 30 \nAfter insertion: 4\n",
+    "diagnostics": ""
+  },
+  {
+    "id": "model-solution",
+    "passed": true,
+    "exit_code": 0,
+    "output": "Amal: 85\nLina: 0\nAccepted 120: false\nAmal's grade is still 85\n",
+    "diagnostics": ""
+  },
+  {
+    "id": "model-checks-solution",
+    "passed": true,
+    "exit_code": 0,
+    "output": "PASS: Default grade and name\nPASS: Constructor accepts a valid grade\nPASS: Both boundaries: 0 and 100\nPASS: Invalid updates preserve the previous grade\nPASS: Invalid initial grade keeps safe fallback\nPASS: Objects have independent state\nChecks passed: 6/6\nOOP_CHECKPOINT_PASS\n",
+    "diagnostics": ""
+  },
+  {
+    "id": "model-checks-starter",
+    "passed": true,
+    "exit_code": 1,
+    "output": "PASS: Default grade and name\nFAIL: Constructor accepts a valid grade\nFAIL: Both boundaries: 0 and 100\nFAIL: Invalid updates preserve the previous grade\nPASS: Invalid initial grade keeps safe fallback\nFAIL: Objects have independent state\nChecks passed: 2/6\n",
+    "diagnostics": ""
+  }
+]
