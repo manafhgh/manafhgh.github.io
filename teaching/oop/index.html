@@ -554,8 +554,13 @@ setupNavigation();
         const request = fetch(host + '/counter/' + encodeURIComponent(path) + '.json', {
             signal: controller.signal, credentials: 'omit', referrerPolicy: 'no-referrer'
         }).then(response => {
-            if (!response.ok) throw new Error('Counter unavailable');
-            return response.json();
+            // A new path returns HTTP 404 with a valid zero-count JSON body.
+            // Do not hide that zero; cached missing-path responses may persist.
+            if (!response.ok && response.status !== 404) throw new Error('Counter unavailable');
+            return response.json().then(data => {
+                if (!response.ok && String(data.count) !== '0') throw new Error('Counter unavailable');
+                return data;
+            });
         }).then(data => {
             // GoatCounter supplies a formatted string. Never insert server HTML.
             const value = String(data.count ?? '');
